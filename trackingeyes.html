@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background: ; */
+        }
+
+        .emoji-face {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: transparent;
+            /* background: rgba(255,255,0,0.683); */
+            border: 5px solid black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+
+/*         
+        .emoji-face::before {
+            content: '';
+            top: 180px;
+            position: absolute;
+            width: 150px;
+            background: crimson;
+            height: 70px;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 70px;
+            transition: 0.5s;
+        } */
+
+        .eyes {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid black;
+            border-radius: 100%;
+        }
+
+        .eyes .eye {
+            position: relative;
+            width:100%;
+            height: 100%;
+            display: block;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .eyes .eye::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 25px;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="emoji-face"> -->
+        <div class="eyes">
+            <div class="eye"></div>
+            <!-- <div class="eye"></div> -->
+        </div>
+    <!-- </div> -->
+
+    <script>
+        document.querySelector('body').addEventListener("mousemove", eyeball);
+
+        function eyeball() {
+            let eyes = document.querySelectorAll(".eye")
+            eyes.forEach(eye => {
+                let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+                let y = eye.getBoundingClientRect().top + eye.clientHeight / 2;
+
+
+                let radian = Math.atan2(event.pageX - x, event.pageY - y)
+                let rotate = radian * (180 / Math.PI) * -1 + 270;
+                eye.style.transform = `rotate(${rotate}deg)`;
+
+            })
+        }
+
+    </script>
+</body>
+
+</html>

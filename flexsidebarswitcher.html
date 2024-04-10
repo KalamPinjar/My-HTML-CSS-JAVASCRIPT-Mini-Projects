@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .with-sidebar {
+            --main-min-width: 45ch;
+            --sidebar-size: 250px;
+            --gap: 2rem;
+
+            display: flex;
+            gap: var(--gap);
+            flex-wrap: wrap;
+        }
+
+        .with-sidebar>* {
+            flex-grow: 1;
+        }
+
+        .with-sidebar> :first-child {
+            flex-grow: 999;
+            flex-basis: calc(((var(--main-min-width) - (100% - var(--sidebar-size) - var(--gap))) * 9999));
+        }
+
+        .with-sidebar> :last-child {
+            flex-basis: var(--sidebar-size);
+        }
+
+        @layer not-demo-related {
+            :root {
+                --content-max-width: 100%;
+
+                --font-family: system-ui;
+
+                --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
+                --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.31rem);
+                --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
+                --fs-600: clamp(1.62rem, calc(1.37rem + 1.24vw), 2.33rem);
+                --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
+                --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
+                --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
+
+                --clr-primary-700: hsl(219, 76%, 75%);
+                --clr-primary-600: hsl(219, 76%, 50%);
+                --clr-primary-500: hsl(219, 76%, 35%);
+                --clr-primary-400: hsl(219, 76%, 25%);
+                --clr-primary-300: hsl(219, 76%, 15%);
+
+                --clr-secondary-700: hsl(269, 75%, 75%);
+                --clr-secondary-600: hsl(269, 75%, 50%);
+                --clr-secondary-500: hsl(269, 75%, 35%);
+                --clr-secondary-400: hsl(269, 75%, 20%);
+                --clr-secondary-300: hsl(269, 75%, 15%);
+
+                --clr-accent-700: hsl(358, 72%, 75%);
+                --clr-accent-600: hsl(358, 72%, 50%);
+                --clr-accent-500: hsl(358, 72%, 35%);
+                --clr-accent-400: hsl(358, 72%, 20%);
+                --clr-accent-300: hsl(358, 72%, 15%);
+
+                --clr-neutral-900: hsl(219, 15%, 90%);
+                --clr-neutral-700: hsl(219, 15%, 75%);
+                --clr-neutral-600: hsl(219, 15%, 50%);
+                --clr-neutral-500: hsl(219, 15%, 35%);
+                --clr-neutral-400: hsl(219, 15%, 20%);
+                --clr-neutral-300: hsl(219, 15%, 15%);
+                --clr-neutral-100: hsl(219, 15%, 5%);
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --clr-primary-300: hsl(219, 76%, 75%);
+                    --clr-primary-400: hsl(219, 76%, 50%);
+                    --clr-primary-500: hsl(219, 76%, 35%);
+                    --clr-primary-600: hsl(219, 76%, 25%);
+                    --clr-primary-700: hsl(219, 76%, 15%);
+
+                    --clr-secondary-300: hsl(269, 75%, 75%);
+                    --clr-secondary-400: hsl(269, 75%, 50%);
+                    --clr-secondary-500: hsl(269, 75%, 35%);
+                    --clr-secondary-600: hsl(269, 75%, 20%);
+                    --clr-secondary-700: hsl(269, 75%, 15%);
+
+                    --clr-accent-300: hsl(358, 72%, 75%);
+                    --clr-accent-400: hsl(358, 72%, 50%);
+                    --clr-accent-500: hsl(358, 72%, 35%);
+                    --clr-accent-600: hsl(358, 72%, 20%);
+                    --clr-accent-700: hsl(358, 72%, 15%);
+
+                    --clr-neutral-100: hsl(219, 15%, 90%);
+                    --clr-neutral-300: hsl(219, 15%, 75%);
+                    --clr-neutral-400: hsl(219, 15%, 50%);
+                    --clr-neutral-500: hsl(219, 15%, 35%);
+                    --clr-neutral-600: hsl(219, 15%, 20%);
+                    --clr-neutral-700: hsl(219, 15%, 15%);
+                    --clr-neutral-900: hsl(219, 15%, 5%);
+                }
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            html {
+                color-scheme: dark light;
+            }
+
+            body {
+                margin: 0;
+                color: var(--clr-neutral-300);
+                font-family: var(--font-family);
+                font-size: var(--fs-400);
+                line-height: 1.6;
+                padding-block: 6rem;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: var(--clr-neutral-100);
+            }
+
+            h1 {
+                font-size: var(--fs-900);
+                line-height: 1.05;
+                text-transform: uppercase;
+                font-weight: 900;
+                text-wrap: balance;
+            }
+
+            p {
+                text-wrap: pretty;
+            }
+
+            .wrapper {
+                width: min(var(--content-max-width), 100% - 2rem);
+                margin-inline: auto;
+            }
+
+            .section-title {
+                font-size: var(--fs-800);
+                line-height: 1.1;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+
+            * {
+                margin: 0;
+            }
+
+            .flow>*+* {
+                margin-top: var(--flow-spacer, 1em);
+            }
+
+            :where(.flow > :not(:first-child)) {}
+
+            .visually-hidden {
+                clip: rect(0 0 0 0);
+                clip-path: inset(50%);
+                height: 1px;
+                overflow: hidden;
+                position: absolute;
+                white-space: nowrap;
+                width: 1px;
+            }
+        }
+
+        .sidebar {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--clr-neutral-400);
+        }
+
+        .sizes {
+            position: fixed;
+            inset: auto 4rem 4rem;
+            padding: 1rem;
+            border: 3px solid var(--clr-neutral-400);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            background: rgb(0 0 0 / 0.85);
+        }
+
+        /* 
+.main-with-sidebar,
+main,
+aside {
+  border: 3px solid;
+}
+
+.main-with-sidebar {
+  border-color: hotpink;
+}
+main {
+  border-color: lime;
+}
+aside {
+  border-color: orangered;
+} */
+
+        [data-indicator-for=".main-with-sidebar"] {
+            color: hotpink;
+        }
+
+        [data-indicator-for="main"] {
+            color: lime;
+        }
+
+        [data-indicator-for="aside"] {
+            color: orangered;
+        }
+
+        .sizes>*::before {
+            content: "";
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background: currentColor;
+            margin-inline-end: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="with-sidebar">
+            <main>
+                <h1>Hello world</h1>
+
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit consequuntur maxime cumque ut
+                    quos ipsam, veniam soluta fugiat illo aliquid temporibus provident ex officiis ullam earum ad
+                    ratione at? Exercitationem.</p>
+                <section class="with-sidebar">
+                    <div>
+                        <h2>Lorem, ipsum dolor</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque molestias totam nihil dolorem
+                            corporis libero ducimus expedita ipsum nemo qui, sunt nesciunt fugiat aliquid minima
+                            veritatis id porro. Ut, eveniet.</p>
+                        <p>Recusandae sed odit explicabo facilis quo accusamus adipisci, quisquam provident, illum
+                            delectus minus. Veritatis sunt officia reiciendis, nemo placeat vel omnis molestias unde?
+                            Asperiores, quae. Totam placeat corrupti tempora tenetur?</p>
+                        <p>Fuga sed officiis maxime aspernatur quo maiores illo perferendis? Officiis rem modi
+                            praesentium ratione saepe debitis molestias, et nam repudiandae dolor. Voluptates
+                            dignissimos necessitatibus minima beatae autem atque vitae est!</p>
+                    </div>
+                    <div>
+                        <h2>Consect etur</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, error.</p>
+                        <p>Omnis cupiditate eum, est alias qui hic odio ipsam consectetur?</p>
+                    </div>
+                </section>
+
+            </main>
+            <aside class='sidebar'>
+                <h2>Sidebar</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Iure veritatis accusantium eum quibusdam.</p>
+                <p>Dolorum amet nisi harum vitae!</p>
+            </aside>
+        </div>
+    </div>
+    <!-- 
+      <div class="sizes">
+        <p data-indicator-for=".main-with-sidebar">The parent width is <span></span>px</p>
+        <p data-indicator-for="main">The main width is <span></span>px</p>
+        <p data-indicator-for="aside">The aside width is <span></span>px</p>
+      </div> -->
+    <script>
+        function calculateSizes() {
+            const indicators = document.querySelector(".sizes").querySelectorAll("p");
+            indicators.forEach((indicator) => {
+                let targetName = indicator.getAttribute("data-indicator-for");
+
+                let target = document.querySelector(targetName);
+                let outputEl = indicator.querySelector("span");
+
+                let w = target.offsetWidth;
+
+                outputEl.innerHTML = w;
+            });
+        }
+        calculateSizes();
+        window.onresize = calculateSizes;
+
+    </script>
+</body>
+
+</html>

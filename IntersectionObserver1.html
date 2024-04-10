@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: self-start;
+            gap: 1rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid black;
+            padding: .5rem;
+            border-radius: .25rem;
+            font-size: 1.5em;
+            transform: translateX(100px);
+            opacity: 0;
+            transition: 150ms;
+
+        }
+
+        .card.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="card-container">
+        <div class=" card">This is the First Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is a Card</div>
+        <div class="card">This is the Last Card</div>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll(".card")
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    entry.target.classList.toggle("show", entry.isIntersecting)
+                    // if you dont want your entries to be animated again and again after once animated the uncomment below code
+                    // if(entry.isIntersecting) observer.unobserve(entry.target)   
+
+
+                })
+            }, {
+            threshold: 1,
+            // rootMargin:"-100px"
+        }
+        )
+
+        // cards.forEach(card => {
+        //     observer.observe(card)
+        // })
+        const lastCardObserver = new IntersectionObserver(
+            entries => {
+                const lastCard = entries[0]
+                if (!lastCard.isIntersecting) return
+                loadNewCards()
+                lastCardObserver.unobserve(lastCard.target)
+                lastCardObserver.observe(document.querySelector(".card:last-child"))
+            },
+            { rootMargin: "100px" }
+        )
+
+        lastCardObserver.observe(document.querySelector(".card:last-child"))
+
+
+
+        cards.forEach(card => {
+            observer.observe(card)
+        })
+
+        const cardContainer = document.querySelector(".card-container")
+        function loadNewCards() {
+            const card = document.createElement("div")
+            card.textContent = "This is a Card"
+            card.classList.add("card")
+            observer.observe(card)
+            cardContainer.appendChild(card)
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to right, #C06C84, #6c5b7b, #355c7d);
+
+
+        }
+
+        .wrapper {
+            position: absolute;
+            inset: 0;
+            /* background: red; */
+            transform-origin: center;
+            transition: 1s;
+        }
+
+        .circle1 {
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            background: linear-gradient(to left, 
+            #d16483, #8657af, #356792);
+            ;
+
+            clip-path: circle(30% at center);
+            z-index: -9999;
+            display: grid;
+            place-items: center;
+        }
+
+        .circle2 {
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            background: #f3f3f3;
+            clip-path: circle(15% at center);
+            z-index: -9999;
+            display: grid;
+            place-items: center;
+        }
+
+        .item {
+            position: relative;
+            transform-origin: center;
+            transition: 1s;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid #ff80ab;
+            margin: 0;
+            font-size: 3em;
+            font-family: sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        /* 
+        .item:nth-child(1) {
+
+            transform: translate(95vh, 50%);
+        }
+
+        .item:nth-child(2) {
+            transform: translate(95vh, 180%);
+
+        }
+
+        .item:nth-child(3) {
+            transform: translate(95vh, 390%);
+
+        }
+
+        .item:nth-child(4) {
+
+            transform: translate(95vh, 520%);
+        } */
+
+
+        .item:nth-child(1) {
+            background: #355c7d;
+            transform: translate(95vh, 50%);
+        }
+
+        .item:nth-child(2) {
+            background: mediumpurple;
+            transform: translate(calc(135vh - 25%), 180%);
+
+        }
+
+        .item:nth-child(3) {
+            background: mediumvioletred;
+            transform: translate(95vh, 320%);
+
+        }
+
+        .item:nth-child(4) {
+            background: midnightblue;
+            transform: translate(60vh, -10%);
+        }
+
+        .left,
+        .right {
+            display: inline-block;
+            color: white;
+            font-size: 3em;
+            cursor: pointer;
+            /* background: black; */
+        }
+
+        .left {
+            margin-right: 20px
+        }
+
+        .right {
+            margin-left: 20px;
+        }
+
+        .controls {
+            /* background: red; */
+            position: relative;
+            display: flex;
+        }
+
+        .controls span {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .controls span::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-top: 4px solid white;
+            border-left: 4px solid white;
+            transform: rotate(135deg);
+        }
+
+        .controls span:nth-child(1)::before {
+
+            transform: rotate(-45deg);
+            translate: 2px;
+        }
+
+        .controls span:active {
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrapper" id="center">
+
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+    <div class="controls">
+        <span class="left" onclick="turnLeft()"></span>
+        <span class="right" onclick="turnRight()"></span>
+    </div>
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+
+
+    <script>
+        let items = document.querySelectorAll('.wrapper')
+        var itemId = Array.from(items)
+        console.log(itemId)
+
+        var sectionDeg = 90 / itemId.length
+
+        var radianSectionDeg = sectionDeg * Math.PI * 2 / 360;
+
+        var radianLength = 5;
+
+        for (var i = 0; i < itemId.length; i++) {
+            itemId[i].style.top = radianLength * Math.sin(radianSectionDeg * i - 1.5708) - 1 + 'px';
+            itemId[i].style.left = radianLength * Math.cos(radianSectionDeg * i - 1.5708) - 1 + 'px';
+
+        }
+
+        var rotation = 0;
+        var center = document.getElementById('center');
+
+        function turnLeft() {
+            rotation = rotation + radianSectionDeg
+            center.style.transform = 'rotate(' + rotation + 'rad)';
+            for (var i = 0; i < itemId.length; i++) {
+
+                itemId[i].style.transform = 'rotate(' + -rotation + 'rad)';
+            }
+        }
+
+        function turnRight() {
+            rotation = rotation - radianSectionDeg
+            center.style.transform = 'rotate(' + rotation + 'rad)';
+            for (var i = 0; i < itemId.length; i++) {
+
+                itemId[i].style.transform = 'rotate(' + -rotation + 'rad)';
+            }
+        }
+    </script>
+</body>
+
+</html>

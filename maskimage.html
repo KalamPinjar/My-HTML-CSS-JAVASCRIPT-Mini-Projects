@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+        }
+        .container{
+            background: rgb(88, 56, 56);
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .mask{
+            height: 100vh;
+            width: 100%;
+            background-image: url("images/space/gallexy1.jpg");
+            background-size: cover;
+            position: relative;
+           
+        }
+        .mask::before{
+            content: '';
+            position: absolute;
+            top:0;
+            left:0;
+            
+            height: 100vh;
+            width: 100%;
+            background-image: url("images/Mask/frame.jpeg");
+            background-size:40%;
+            background-size: cover;
+            background-position: center;
+            mix-blend-mode:screen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="mask"></div>
+    </div>
+</body>
+
+</html>

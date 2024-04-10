@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        :root {
+            --clr-div: rgb(37, 37, 37);
+            --bg-main: #161313;
+            --card1-bg: tomato;
+
+        }
+
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-main);
+            gap: 5vw;
+            flex-wrap: wrap;
+        }
+
+
+
+        .animated_card,
+        .animated_card2 {
+            display: grid;
+            height: 50vh;
+            background-color: var(--clr-div);
+            place-items: center;
+            position: relative;
+            aspect-ratio: 5/7;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        span {
+            color: var(--clr-div);
+            font-size: 10em;
+            z-index: 10;
+
+        }
+
+        .animated_card::before {
+            position: absolute;
+            content: '';
+            aspect-ratio: 5/7;
+
+            /* height: 500px;
+            width: 350px; */
+            background-color: var(--card1-bg);
+            border-radius: 1.5em;
+            z-index: -1;
+            transition: 0.2s;
+            animation: animate 2s linear infinite;
+        }
+
+
+        .animated_card:hover::before {
+            height: calc(55vh - 15px);
+            /* height: 512px;
+            width: 362px; */
+        }
+
+        @keyframes animate {
+            50% {
+                filter: hue-rotate(350deg);
+            }
+
+        }
+
+        .animated_card2 {
+            overflow: hidden;
+        }
+
+        .animated_card2::before {
+            position: absolute;
+            content: '';
+            width: 50%;
+            height: 150%;
+            background: lime;
+            animation: animate2 5s linear infinite;
+            
+        }
+
+        @keyframes animate2 {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        .animated_card2::after {
+            position: absolute;
+            content: '';
+            inset: 7px;
+            background: #222;
+            border-radius: 8px;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div class="animated_card">
+        <span class="fa-paper-plane fa-regular"></span>
+    </div>
+    <div class="animated_card2">
+        <span class="fa-brands fa-codepen"></span>
+    </div>
+
+</body>
+
+</html>

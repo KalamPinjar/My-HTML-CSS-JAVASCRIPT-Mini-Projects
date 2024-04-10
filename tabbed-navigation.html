@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: mediumpurple;
+        }
+
+        /* menu links */
+        .container {
+            width: 90%;
+            margin: auto;
+            position: relative;
+        }
+
+        .tadded-container {
+            position: relative;
+        }
+
+        .tadded-container .menu_Links {
+            position: relative;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .menu_Links ul {
+            list-style: none;
+        }
+
+        .menu_Links ul li {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            transition: 0.5s;
+
+        }
+
+        @media (max-width: 567px) {
+            .menu_Links ul li {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        .menu_Links ul li:not(:last-child) {
+            margin-right: 30px;
+        }
+
+        .menu_Links ul li.active,
+        .menu_Links ul li.hover {
+            background: rgb(12, 9, 9);
+            color: white;
+        }
+
+        /* menu end */
+
+        /* section start */
+        .sections section:not(.visible) {
+            display: none;
+        }
+
+        .sections .visible {
+            animation: feedIn 1.5s;
+        }
+
+        @keyframes feedIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .sections>section {
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            margin: 60px auto 0;
+            background: #120142;
+            position: relative;
+        }
+
+        .sections .about_section {
+            padding-bottom: 50px;
+        }
+
+        .about_section h2 {
+            padding: 40px;
+            font-weight: bold;
+            font-size: 40px;
+        }
+
+        @media (max-width:567px) {
+            .about_section h2 {
+                padding: 20px;
+                font-size: 25px;
+            }
+        }
+
+        .about_section h4 {
+            font-weight: 100;
+            padding: 20px;
+        }
+
+        .about_section p {
+            width: 80%;
+            line-height: 1.6;
+            margin-top: 10px;
+            margin: auto;
+            color: #706f6f;
+        }
+
+        @media (max-width:567px) {
+            .about_section p {
+                width: 100%;
+            }
+        }
+
+        /* End about section */
+        .sections .courses_section {
+            overflow: hidden;
+        }
+
+        .courses_section h2 {
+            padding: 40px;
+            color: white;
+            font-weight: bold;
+            font-size: 40px;
+        }
+
+        @media (max-width:567px) {
+            .courses_section h2 {
+                padding: 20px;
+                font-size: 25px;
+            }
+        }
+
+        .courses_section div img {
+            width: 80%;
+            aspect-ratio: 4/1;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .courses_section div h4 {
+            padding: 20px 20px 30px 20px;
+            color: white;
+        }
+
+        /* end of courses section */
+
+        .sections .contact_section {
+            padding-bottom: 50px;
+        }
+
+        .contact_section h2 {
+            padding: 20px 20px 30px 20px;
+        }
+
+        .contact_section .social_Links a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            transition: 0.5s;
+        }
+
+        .contact_section .social_Links a:hover {
+            opacity: 0.8;
+        }
+
+        .contact_section .social_Links a:first-child {
+            background: #1da1f2;
+        }
+
+        .contact_section .social_Links a:nth-child(2) {
+            background: #e84a5f;
+        }
+
+        .contact_section .social_Links a:nth-child(3) {
+            background: blueviolet;
+        }
+
+        .contact_section .social_Links a:nth-child(4) {
+            background: crimson;
+        }
+
+        .contact_section .social_Links a:last-child {
+            background: #2a363b;
+        }
+
+        @media (max-width:567px) {
+            .contact_section .social_Links a {
+                display: block;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tadded-container">
+        <div class="container">
+            <div class="menu_Links">
+                <ul>
+                    <li class="active">About</li>
+                    <li>Courses</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+
+
+            <div class="sections">
+                <section class="about_section visible" data-section="About">
+                    <h2>About Me</h2>
+                    <!-- <img src="/images/icons/PngItem_all_social_media-dark.png" alt=""> -->
+                    <h4>Kalam Pinjar</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati rem placeat rerum labore
+                        et! Similique tempora nostrum quas quidem nesciunt reprehenderit quis saepe! Doloremque quas
+                        blanditiis, exercitationem pariatur ullam aut ut, laboriosam accusamus natus magnam
+                        laudantium delectus voluptatem neque repellat odio sint deleniti? Ut ratione eos molestias
+                        asperiores sed assumenda cum praesentium modi ipsa illum qui cupiditate, magni doloremque
+                        veniam!</p>
+
+                </section>
+
+                <section class="courses_section" data-section="Courses">
+                    <h2>Courses</h2>
+                    <a href="">
+                        <div class="team_box">
+                            <img src="images/green-gallary/greenlime-unsplash.jpg" alt="">
+                            <h4>HTML COMPLETE GUIDE</h4>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="team_box">
+                            <img src="images/green-gallary/greenlime-unsplash.jpg" alt="">
+                            <h4>CSS COMPLETE GUIDE</h4>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="team_box">
+                            <img src="images/green-gallary/greenlime-unsplash.jpg" alt="">
+                            <h4>JAVASCRIPT COMPLETE GUIDE</h4>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="team_box">
+                            <img src="images/green-gallary/greenlime-unsplash.jpg" alt="">
+                            <h4>REACT COMPLETE GUIDE</h4>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="team_box">
+                            <img src="images/green-gallary/greenlime-unsplash.jpg" alt="">
+                            <h4>GITHUB COMPLETE GUIDE</h4>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="team_box">
+                            <img src="images/green-gallary/greenlime-unsplash.jpg" alt="">
+                            <h4>NODEJS COMPLETE GUIDE</h4>
+                        </div>
+                    </a>
+                </section>
+
+                <section class="contact_section" data-section="Contact">
+                    <h2>Contact</h2>
+                    <div class="social_Links">
+                        <a href="">Youtube</a>
+                        <a href="">Twitter</a>
+                        <a href="">Github</a>
+                        <a href="">Udemy</a>
+                        <a href="">Instagram</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        const menu_lis = document.querySelectorAll(".menu_Links ul li");
+
+        menu_lis.forEach((li) => {
+            li.addEventListener("click", (e) => {
+                document.querySelectorAll(".menu_Links ul li.active")
+                    .forEach((activeEle) => {
+                        activeEle.classList.remove("active")
+                    })
+
+                e.target.classList.add("active")
+
+                document.querySelectorAll(".sections > section")
+                    .forEach((section) => {
+                        if (e.target.textContent === section.dataset.section) {
+                            document.querySelectorAll(".sections .visible")
+                                .forEach((ele) => {
+                                    ele.classList.remove("visible")
+                                })
+                            section.classList.add("visible")
+                        }
+                    })
+            })
+        })
+    </script>
+</body>
+
+</html>
+
+</html>

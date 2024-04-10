@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            background: #0c0c0c;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .panel-container {
+            background: #111111;
+            height: fit-content;
+            width: 700px;
+            padding: 30px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.377);
+            border-radius: 4px;
+            font-size: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        strong {
+            font-size: 1.5rem;
+        }
+
+        .rating-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 200px;
+        }
+
+        .rating {
+            text-align: center;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            margin: 10px 5px;
+            cursor: pointer;
+        }
+
+        .rating:hover,
+        .rating.active {
+            border-radius: 4px;
+            background: #ccc;
+            transition: 1s ease;
+        }
+
+        .rating .icon {
+            width: 40px;
+            font-size: 5rem;
+            margin-right: 10px;
+        }
+
+        .rating small {
+            color: #fff;
+            display: inline-block;
+            margin: 10px 0 0;
+        }
+
+        .btn {
+            background: #fff;
+            color: black;
+            border: 0;
+            border-radius: 4px;
+            padding: 12px 30px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .btn.active {
+            transform: scale(0.98);
+        }
+
+        /* Javascript */
+
+        .heart {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="panel-container" id="panel">
+        <strong>Your Feedback</strong>
+        <div class="rating-container">
+
+            <div class="container">
+                <div class="rating">
+                    <div class="icon">😒</div>
+                    <small>Unhappy</small>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="rating">
+                    <div class="icon">😐</div>
+                    <small>Netural</small>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="rating">
+                    <div class="icon">🤩</div>
+                    <small>Satisfied</small>
+                </div>
+            </div>
+        </div>
+        <button class="btn" id="send">Send Feedback</button>
+    </section>
+
+
+    <script>
+        const ratings = document.querySelectorAll(".rating")
+        const ratingsContainer = document.querySelector('.rating-container')
+        const sendBtn = document.querySelector(".btn")
+        const panel = document.querySelector("#panel")
+
+        let selectedRating = "Satisfied"
+
+
+        ratingsContainer.addEventListener("click",(e)=>{
+            if(e.target.parentNode.classList.contains("rating")){
+                removeActives();
+                e.target.parentNode.classList.add("active")
+                selectedRating = e.target.nextElementSibling.innerHTML
+            }
+        })
+
+        sendBtn.addEventListener("click",()=>{
+           
+                panel.innerHTML = `
+                <p class="heart">💖</p>
+                <strong>Thank You!</strong>
+                <br>
+                <strong>Feedback: ${selectedRating} </strong>
+                `;
+
+                setInterval(() => {
+                    location.reload();
+                }, 3000);
+        })
+
+        function removeActives(){
+            for(let i = 0; i < ratings.length; i++){
+                ratings[i].classList.remove("active")    
+            }
+        }
+    </script>
+
+</body>
+
+</html>

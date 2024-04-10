@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: sans-serif;
+            background: linear-gradient(rgb(201, 65, 65), rgb(141, 24, 24), rgb(83, 18, 18));
+        }
+
+        .scores-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .total-score {
+            margin-right: 20px;
+            margin: 20px;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            color: black;
+            box-shadow: inset 0px 0px 25px 2px black;
+        }
+
+        .time {
+            margin-right: 20px;
+            margin: 20px;
+            text-align: center;
+            background: white;
+            color: black;
+            padding: 20px;
+            box-shadow: inset 0px 0px 25px 2px black
+        }
+
+        .grid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background: rgb(43, 0, 0);
+            box-shadow: 0 3px 10px black;
+            margin-top: 2rem;
+            padding: 20px;
+        }
+
+        .square {
+            height: 150px;
+            width: 200px;
+            margin: 10px;
+            border: 1px solid;
+            box-shadow: 0 3px 10px rgb(0, 0, 0);
+            background: transparent;
+            
+        }
+
+        /* Javascript */
+
+        .emoji {
+            background: url(images/emoji.png);
+            background-position: center;
+            /* mix-blend-mode: color-burn; */
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="scores-container">
+        <div class="total-score">
+            <h2>Your Score:</h2>
+            <h2 id="score">0</h2>
+        </div>
+
+        <div class="time">
+            <h2>Time Left:</h2>
+            <h2 id="time-left">60</h2>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid">
+            <div class=" square" id="1"></div>
+            <div class="square" id="2"></div>
+            <div class="square" id="3"></div>
+            <div class="square" id="4"></div>
+            <div class="square" id="5"></div>
+            <div class="square" id="6"></div>
+            <div class="square" id="7"></div>
+            <div class="square" id="8"></div>
+            <div class="square" id="9"></div>
+            <div class="square" id="10"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const squares = document.querySelectorAll('.square'),
+            timeLeft = document.querySelector("#time-left"),
+            score = document.querySelector("#score");
+
+        let result = 0;
+        let hitPostion;
+        let currentTime = 60;
+        let timerId = null;
+
+        function randomSquare() {
+            squares.forEach(square => {
+                square.classList.remove("emoji")
+            })
+            let randomSquare = squares[Math.floor(Math.random() * 9) + 1]
+            randomSquare.classList.add("emoji")
+            hitPostion = randomSquare.id
+
+        }
+
+        squares.forEach(square => {
+            square.addEventListener("mousedown", () => {
+                if (square.id == hitPostion) {
+                    result++
+                    score.textContent = result;
+                    hitPostion = null
+
+                }
+            })
+        })
+
+
+        function moveEmoji() {
+            timeId = setInterval(randomSquare, 500)
+        }
+        moveEmoji()
+
+        function countDown() {
+            currentTime--;
+            timeLeft.textContent = currentTime
+
+            if (currentTime == 0) {
+                clearInterval(countDownTimerId)
+                clearInterval(timeId)
+
+                alert(`Game Over! Your Final Scores Is ${result}`);
+            }
+        }
+
+        let countDownTimerId = setInterval(countDown, 1000)
+    </script>
+</body>
+
+</html>

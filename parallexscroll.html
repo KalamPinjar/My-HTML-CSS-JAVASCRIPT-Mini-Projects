@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow-y: scroll;
+        }
+
+        .slides {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            color: white;
+        }
+
+
+        .slides h2 {
+            font-size: 70px;
+            font-weight: 600;
+            max-width: 650px;
+        }
+
+        .slide1 {
+            background: url("images/space/beautiful-planets.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+
+        .slide2 {
+            background: url("images/space/planet1.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+
+        }
+
+        .slide3 {
+            background: url("images/space/gallexy1.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+
+        }
+
+        .slide4 {
+            background: url("images/space/gallexy3.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            z-index: 10;
+        }
+
+        .container h2 {
+            position: fixed;
+            transform: translate(50%, 50%);
+            z-index: 9;
+            color: white;
+            font-size: 3em;
+            top: 40%;
+            left: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <div class="slide1 slides">
+
+        </div>
+        <div class="slide2 slides">
+            <!-- <h2>Lorem ipsum dolor sit amet.</h2> -->
+        </div>
+        <div class="slide3 slides">
+            <!-- <h2>Lorem ipsum dolor sit amet.</h2> -->
+        </div>
+        <div class="slide4 slides">
+            <h3>Lorem ipsum dolor sit amet.</h3>
+        </div>
+    </div>
+
+</body>
+
+</html>

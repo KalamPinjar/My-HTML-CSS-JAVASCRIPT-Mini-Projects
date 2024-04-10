@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            color-scheme: dark;
+        }
+
+        body {
+            height: 100vh;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .range-container {
+            position: relative;
+        }
+
+        #range-content {
+            position: absolute;
+            left: 50%;
+            top: -50px;
+            transform: translateX(-50%);
+            background: #000;
+            color: white;
+            white-space: nowrap;
+            padding: 10px 15px;
+            border-radius: 7px;
+            transition: opacity 0.5s ease;
+        }
+
+        #range-content::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            border: 10px solid;
+            border-color: #000 #0000 #0000 #0000;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #000;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            background: white;
+            border-radius: 50%;
+            border: 1px solid black;
+            margin-top: -7px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="range-container">
+        <input type="range" min="0" ma="100" id="range" />
+        <span id="range-content">50</span>
+    </div>
+
+
+    <script>
+        const range = document.getElementById("range")
+
+        range.addEventListener("input", e => {
+            const value = +e.target.value;
+            const label = e.target.nextElementSibling;
+
+            const range_width = getComputedStyle(e.target).getPropertyValue("width")
+            const label_width = getComputedStyle(label).getPropertyValue("width")
+                
+            const num_width = +range_width.substring(0, range_width.length - 2)
+            const num_label_width = +label_width.substring(0, label_width.length - 10)
+            
+            const max = +e.target.max;
+            const min = +e.target.min;
+
+            
+            const left = 
+            value * (num_width/ max) -
+            num_label_width / 2 *
+            scale(value, min, max, 10, -10);
+
+            label.style.left =`${left}px`;
+            label.innerHTML = value;
+        
+        })
+        const scale =(num,in_min,in_max,out_min,out_max)=>{
+            return ((num, in_min) * (out_max, out_min)) / (in_max - in_min) + out_min;
+        }
+        
+ </script>
+</body>
+
+</html>

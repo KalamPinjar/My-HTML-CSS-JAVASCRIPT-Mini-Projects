@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            color: white;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(rgb(147, 93, 248), rgb(38, 25, 219));
+            height: 100vh;
+        }
+
+        .content {
+            box-shadow: 5px 5px 10px black;
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 700px;
+            padding: 4rem 5rem;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: black;
+        }
+
+        .accordion-item {
+            text-align: center;
+            width: 90%;
+        }
+
+        .accordion-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            min-height: 3.5rem;
+            cursor: pointer;
+        }
+
+        .accordion-item-title {
+            color: rgba(255, 253, 253, 0.758);
+            font-size: 1.085rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .accordion-item-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-item-body-content {
+            width: 80%;
+            padding-top: 1rem;
+            text-align: left;
+
+        }
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            border: 2px solid;
+            width: 34px;
+            height: 34px;
+            transition: color 0.25s;
+            border-radius: 100%;
+        }
+
+        .icon::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            background: white;
+            border-radius: 20px;
+            pointer-events: all;
+            transition: all 0.3s ease;
+        }
+
+        .icon::after {
+            content: '';
+            position: absolute;
+            height: 14px;
+            width: 2px;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Javascript */
+
+        .accordion-item-header.active>.icon::before {
+            transform: rotate(180deg);
+        }
+
+        .accordion-item-header.active>.icon::after {
+            transform: rotate(90deg);
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            margin: 10px 0 10px 0;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="title">JavaScript</div>
+        <div class="accordion-item">
+            <div class="accordion-item-header">
+                <div class="accordion-item-title">What is JavaScript</div>
+                <span class="icon"></span>
+            </div>
+            <div class="accordion-item-body ">
+                <div class="accordion-item-body-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+                    illo excepturi minus quasi quae officiis a mollitia consectetur natus, blanditiis ipsa quia
+                    distinctio
+                    amet doloremque iste consequatur. Autem, a ad. Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
+                    Dolorem voluptas quia illo nihil veniam reiciendis id et ad expedita neque, asperiores facilis vel
+                    aspernatur tempora perspiciatis, eos explicabo, culpa deleniti.
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="accordion-item">
+            <div class="accordion-item-header">
+                <div class="accordion-item-title">Java and Javascript</div>
+                <span class="icon"></span>
+            </div>
+            <div class="accordion-item-body">
+                <div class="accordion-item-body-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+                    illo excepturi minus quasi quae officiis a mollitia consectetur natus, blanditiis ipsa quia
+                    distinctio
+                    amet doloremque iste consequatur. Autem, a ad. Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aut dignissimos eum
+                    exercitationem, et, velit deserunt optio delectus quis repellendus doloremque quaerat repudiandae
+                    vitae. Adipisci deserunt quo suscipit eaque voluptatibus!
+                    Dolorem voluptas quia illo nihil veniam reiciendis id et ad expedita neque, asperiores facilis vel
+                    aspernatur tempora perspiciatis, eos explicabo, culpa deleniti.
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="accordion-item">
+            <div class="accordion-item-header">
+                <div class="accordion-item-title">Can i learn JavaScript without Java</div>
+                <span class="icon"></span>
+            </div>
+            <div class="accordion-item-body">
+                <div class="accordion-item-body-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+                    illo excepturi minus quasi quae officiis a mollitia consectetur natus, blanditiis ipsa quia
+                    distinctio
+                    amet doloremque iste consequatur. Autem, a ad. Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
+                    Dolorem voluptas quia illo nihil veniam reiciendis id et ad expedita neque, asperiores facilis vel
+                    aspernatur tempora perspiciatis, eos explicabo, culpa deleniti.
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </div>
+
+
+    <script>
+
+        const itemHeader = document.querySelectorAll(".accordion-item-header")
+
+        itemHeader.forEach((accordion) => {
+            accordion.addEventListener("click", collapseAccordions)
+
+            function collapseAccordions() {
+                const activeAccordion = document.querySelector('.active')
+                if (activeAccordion && activeAccordion !== accordion) {
+                    activeAccordion.classList.toggle("active")
+                    activeAccordion.nextElementSibling.style.maxHeight = 0;
+                }
+
+                accordion.classList.toggle("active")
+                const accordionItemBody = accordion.nextElementSibling
+
+                if (accordion.classList.contains("active")) {
+                    accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px"
+                } else {
+                    accordionItemBody.style.maxHeight = 0;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

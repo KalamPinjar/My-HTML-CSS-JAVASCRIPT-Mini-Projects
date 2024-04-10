@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #222;
+            user-select: none;
+        }
+
+        #banner1 {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(1, 88, 88);
+            z-index: 1;
+            clip-path: circle(15vw at var(--x) var(--y));
+            visibility: visible;
+        }
+
+        #banner1 h2 {
+            position: relative;
+            color: transparent;
+            -webkit-text-stroke: 4px rgb(255, 255, 255);
+            pointer-events: none;
+            font-size: 25rem;
+            font-weight: bold;
+        }
+
+        #banner2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+            position: absolute;
+            width: 100%;
+            background: rgb(0, 0, 0);
+            /* z-index: 1; */
+            /* clip-path: circle(15vw at var(--x) var(--y)); */
+            visibility: visible;
+
+
+        }
+
+        #banner2 h2 {
+            position: relative;
+            color: transparent;
+            pointer-events: none;
+            -webkit-text-stroke: 4px rgb(255, 253, 253);
+            font-weight: bold;
+            font-size: 25rem;
+        }
+
+        .space {
+            height: 200vh;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="banner1">
+        <h2>Text1</h2>
+    </section>
+
+<!-- or just comment down banner2 for other effect -->
+
+    <section id="banner2">
+        <h2>World</h2>
+    </section>
+    <section class="space">
+
+    </section>
+
+
+    <script>
+        let pos = document.getElementById("banner1");
+        pos.addEventListener("mousemove", e => {
+            pos.style.setProperty("--x", e.clientX + "px")
+            pos.style.setProperty("--y", e.clientY + "px")
+
+            pos.addEventListener("mouseout", e => {
+                pos.style.setProperty("--x", "center" + "px")
+                pos.style.setProperty("--y", "center" + "px")
+
+            })
+        })
+    </script>
+</body>
+
+</html>

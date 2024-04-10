@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: dark;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            translate: 0 30%;
+            margin: 0 50px;
+            background: midnightblue;
+            height: 60vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.4rem;
+        }
+
+        .container input {
+            font-size: 1.1rem;
+            height: 40px;
+            padding: 10px;
+            background: rgb(35, 28, 49);
+            width: fit-content;
+            border: none;
+
+        }
+
+        .content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 200px;
+            background: mediumpurple;
+            border-radius: 50px;
+        }
+
+        .content .text-data {
+            position: relative;
+            text-align: center;
+        }
+
+        .container .font-edit {
+            gap:0.25rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;;
+            padding: 10px;
+            z-index: 9;
+        }
+
+        .container .font-edit span {
+            cursor: pointer;
+            z-index: -9;
+            padding: 5px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-family: sans-serif;
+            background: mediumvioletred;
+            display: inline-block;
+            height: 35px;
+            width: 90px;
+            border-radius: 20px;
+
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .lowercase {
+            text-transform: lowercase;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input id="textinput" type="text" placeholder="Enter Your Text">
+        <div class="font-edit">
+            <span data-style="uppercase">ABC</span>
+            <span data-style="lowercase">abc</span>
+            <span data-style="bold"><b>bold</b></span>
+            <span data-style="italic"><i>italic</i></span>
+            <span data-style="underline"><u>underline</u></span>
+        </div>
+        <div class="content">
+            <p class="text-data"></p>
+        </div>
+    </div>
+
+    <script>
+        let input = document.getElementById("textinput")
+        let fontEdit = document.querySelectorAll(".font-edit")
+        let display = document.querySelector(".text-data")
+
+        input.addEventListener('keyup', () => {
+            let data = (input.value)
+            display.innerText = data
+        })
+
+        fontEdit.forEach((item) => {
+            item.addEventListener('click', event => {
+                // let textstyle = event.target.dataset.text
+
+                let textStyle = event.target.dataset.style
+                // console.log(textStyle)
+
+                // noob way
+
+                // display.style.textTransform = `${textStyle}`
+                // display.style.fontWeight = `${textStyle}`
+                // display.style.fontStyle = `${textStyle}`
+                // display.style.textDecoration = `${textStyle}`
+                
+                // smart way
+                display.classList.toggle(`${textStyle}`)
+
+            })
+        })
+    </script>
+</body>
+
+</html>

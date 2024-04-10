@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        .container{
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:black;
+            z-index: 1;
+        }
+        .container h2{
+            position: relative;
+            font-size: 8rem;
+            color:black;
+            background: linear-gradient(90deg,red,orange,blue,purple,green,yellow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-stroke:0.03em transparent;
+            user-select: none;
+        }   
+        .container h2::before{
+            content: 'HELLO WORLD';
+            position: absolute;
+            color:black;
+            background: linear-gradient(90deg,red,orange,blue,purple,green,yellow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-stroke:0.03em transparent;
+            opacity: 0.25;
+            z-index: -1;
+            left: 0;
+            transform: translate(-10px,-10px);
+        }
+        .container h2::after{
+            content: 'HELLO WORLD';
+            color:black;
+            background: linear-gradient(90deg,red,orange,blue,purple,green,yellow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-stroke:0.03em transparent;
+            position: absolute;
+            left: 0;
+            opacity: 0.1;
+            z-index: -1;
+
+            transform: translate(-20px,-20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 data-text="HELLO WORLD">HELLO WORLD</h2>
+    </div>
+    
+</body>
+</html>

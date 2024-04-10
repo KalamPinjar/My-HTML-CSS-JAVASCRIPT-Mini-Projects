@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content1="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            background: black;
+        }
+
+        .container2 {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            flex-wrap: wrap;
+
+        }
+
+        .container2 .wrapper {
+            position: relative;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            width: 50%;
+        }
+
+        .container2 .wrapper .card {
+            position: relative;
+            width: 50%;
+            aspect-ratio: 1;
+            margin: 30px;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+
+        }
+
+
+        .container2 .card .content1 {
+            padding: 20px;
+            text-align: center;
+            transition: 0.5s;
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+
+        .container2 .card:hover .content1 {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+
+        .container2 .card .content1 h2 {
+            position: absolute;
+            top: -80px;
+            right: 30px;
+            font-size: 8em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .container2 .card .content1 h3 {
+            z-index: 1;
+            font-size: 1.8em;
+            color: #fff
+        }
+
+        .container2 .card .content1 p {
+            font-weight: 300;
+            font-size: 1em;
+            color: #fff
+        }
+
+        .container2 .card .content1 a {
+            position: relative;
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 15px;
+            background: #fff;
+            color: #000;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .container2 .card .content1 a:hover {
+            background: #086bff;
+        }
+
+        #btn {
+            position: absolute;
+            font-size: 1em;
+            font-weight: 1000;
+            font-style: italic;
+            height: 2em;
+            width: 4em;
+        }
+
+        #span {
+            position: absolute;
+            font-size: 2em;
+        }
+
+
+
+        .description {
+            color: white;
+            width: 40%;
+            height: fit-content1;
+            text-align: start;
+            background: red;
+            padding: 10px;
+        }
+
+        .description h3 {
+            font-size: clamp(1.5rem, 2rem, 2.5rem);
+            margin-bottom: 5%;
+        }
+
+        .description p {
+            font-size: clamp(1rem, 1.1rem - 10px, 1.6rem);
+        }
+
+        @media (width<960px) {
+            .container2 {
+                align-items: center;
+
+            }
+
+            .container2 .wrapper .card {
+    
+                position: relative;
+                width:50%;
+                height: 50vh;
+                box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+                border-radius: 15px;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.5);
+                border-left: 1px solid rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(5px);
+            }
+
+            .container2 .wrapper {
+                width: 100%;
+                padding: 10px;
+                align-items: center;
+
+            }
+
+            .description {
+                width: 50%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container2">
+        <div class="wrapper">
+            <div class="card">
+                <div class="content1">
+                    <h2>01</h2>
+                    <h3>Card One</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit nemo
+                        vitae
+                        aperiam
+                        reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates, iusto
+                        totam
+                        assumenda error?</p>
+                    <a href="">Read More</a>
+
+                </div>
+            </div>
+
+            <div class="description">
+                <h3>Lorem ipsum dolor sit amet.</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                    nobis,
+                    similique voluptatum pariatur. Nobis!</p>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="card">
+                <div class="content1">
+                    <h2>02</h2>
+                    <h3>Card Two</h3>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit nemo
+                        vitae
+                        aperiam
+                        reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates, iusto
+                        totam
+                        assumenda error?</p>
+                    <a href="">Read More</a>
+                </div>
+            </div>
+            <div class="description">
+                <h3>Lorem ipsum dolor sit amet.</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                    nobis,
+                    similique voluptatum pariatur. Nobis!</p>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="card">
+                <div class="content1">
+                    <h2>03</h2>
+                    <h3>Card Three</h3>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit
+                        nemo
+                        vitae
+                        aperiam
+                        reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates,
+                        iusto
+                        totam
+                        assumenda error?</p>
+                    <a href="">Read More</a>
+
+                </div>
+            </div>
+            <div class="description">
+                <h3>Lorem ipsum dolor sit amet.</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                    nobis,
+                    similique voluptatum pariatur. Nobis!</p>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="card">
+                <div class="content1">
+                    <h2>04</h2>
+                    <h3>Card Three</h3>
+
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit
+                        nemo
+                        vitae
+                        aperiam
+                        reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates,
+                        iusto
+                        totam
+                        assumenda error?</p>
+                    <a href="">Read More</a>
+
+                </div>
+            </div>
+            <div class="description">
+                <h3>Lorem ipsum dolor sit amet.</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                    nobis,
+                    similique voluptatum pariatur. Nobis!</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1,
+        });
+
+        //It also supports NodeList
+        VanillaTilt.init(document.querySelectorAll(".card"));
+    </script>
+</body>
+
+</html>

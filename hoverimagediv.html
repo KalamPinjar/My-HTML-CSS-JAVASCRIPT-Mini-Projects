@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: whitesmoke;
+        }
+
+        #main1 {
+            position: relative;
+            transform: translateY(50%);
+            background: slateblue;
+            height: 60vh;
+        }
+
+        #main1 .img-div {
+            margin-bottom: 40px;
+            height: 15vh;
+            background: mediumpurple;
+        }
+
+        /* .img {
+            position: fixed;
+            transform: translate(150%, -100%);
+            display: none;
+        } */
+
+        #fixed-img {
+            position: fixed;
+            z-index: 99;
+            height: 35vh;
+            width: 23vh;
+            left: 50%;
+            top: 23%;
+            border-radius: 10px;
+            display: none;
+            background-size: cover;
+            background-position: center;
+            transition: 250ms ease-in-out;
+    
+        }
+
+
+        .space {
+            height: 100vh;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+  
+        <div id="fixed-img"></div>
+
+        <div id="main1">
+            <div class="img-div" data-img="images/animals-and-nature/animal1.jpg">
+                <h1>Text1</h1>
+            </div>
+            <div class="img-div" data-img="images/animals-and-nature/animal4.jpg">
+                <h1>Text2</h1>
+            </div>
+            <div class="img-div" data-img="images/animals-and-nature/animal3.jpg">
+                <h1>Text3</h1>
+            </div>
+        </div>
+
+    
+
+    <div class="space"></div>
+
+
+    <script>
+        let ele = document.querySelector("#main1")
+        let fixed = document.querySelector("#fixed-img")
+        ele.addEventListener("mouseenter", function () {
+            fixed.style.display = "block";
+        })
+        ele.addEventListener("mouseleave", function () {
+            fixed.style.display = "none";
+        })
+
+        let eles = document.querySelectorAll(".img-div")
+        eles.forEach(function (e) {
+            e.addEventListener("mouseenter", function () {
+                let imgs = e.getAttribute("data-img");
+                fixed.style.backgroundImage = `url(${imgs})`
+            })
+        })
+    </script>
+</body>
+
+</html>

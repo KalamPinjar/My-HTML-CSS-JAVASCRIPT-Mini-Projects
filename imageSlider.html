@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        .center {
+            align-items: center;
+            background: #141414;
+        }
+
+        .wrapper {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #141414;
+        }
+
+        .container {
+            height: 400px;
+            aspect-ratio: 1.5/1;
+            display: flex;
+            overflow: hidden;
+
+        }
+
+        .container:has(.img.active) .img:not(.active) {
+            filter: grayscale(100%);
+        }
+
+        .img {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            gap: 10px;
+        }
+
+        img {
+            height: 100%;
+            width: calc(100%/5);
+            object-fit: cover;
+            overflow: hidden;
+            border: 2px solid #141414;
+            transition: all 0.3s cubic-bezier(0.32, 0, 0.67, 0);
+            cursor: pointer;
+        }
+
+        .active {
+            width: 300%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+
+            <img class="img" src="images/walls.jpg" data-img=" images/walls.jpg">
+
+            <img class="img" src="images/space/gallexy1.jpg">
+
+            <img class="img" src="images/space/effect1.jpg">
+
+            <img class="img" src="images/dragIMG.jpg" alt="" data-img="images/dragIMG.jpg">
+
+            <img class="img" src="images/green-gallary/green-disk.jpg" alt="" data-img=" images/dragIMG.jpg">
+
+
+        </div>
+    </div>
+
+
+
+    <script>
+        const imgs = document.querySelectorAll('.img')
+
+        function clearActiveImg() {
+            imgs.forEach(function (img) {
+                img.classList.remove('active');
+            })
+        }
+
+        imgs.forEach(function (img, index) {
+            img.onclick = function () {
+                event.stopPropagation()
+
+                if (imgs[index].classList.contains('active')) {
+                    imgs[index].classList.remove('active')
+                }
+                else {
+                    clearActiveImg(index);
+                    imgs[index].classList.add('active')
+                }
+            }
+        })
+
+        window.addEventListener('click', () => { clearActiveImg() })
+        imgs.forEach(function (img, index) {
+            setInterval(() => {
+                imgs[index].classList.remove('active')
+            }, 7000);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(270deg, rgb(102, 0, 170), rgb(44, 2, 158));
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            position: relative;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            max-width: 700px;
+            box-shadow: 0px 2px 4px 2px rgb(20, 20, 20);
+            padding: 5rem 8rem;
+        }
+
+        .user {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .testimonial{
+            font-size: 0.95rem;
+            color:rgb(87, 87, 86);
+            line-height: 25px;
+            text-align: center;
+        }
+        .user .user-info{
+            margin-top: 10px;
+            text-align: center;
+        }
+        .user .username{
+            margin: 0;
+        }
+        .line{
+            background:crimson;
+            height: 4px;
+            width: 100%;
+            margin-top: 20px;
+            animation: anime 10s linear infinite;
+        }
+        @keyframes anime {
+            0%{
+                transform: scaleX(0);
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="testimonial-container">
+        <div class="user">
+            <img src="images/black_ink_circle_brush.png" height="100px" width="100px">
+            <div class="user-info">
+                <h4 class="username">Someone Someone</h4>
+                <div class="twitter-handle">@frontendben</div>
+            </div>
+        </div>
+        <p class="testimonial">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid ut facere quibusdam
+            fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam
+            odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
+            excepturi? Soluta sit architecto, molestiae ullam perspiciatis exercitationem cumque similique impedit ipsum
+            maiores tempora consectetur placeat dolores. Nulla qui laborum voluptatibus.
+        </p>
+        <div class="line"></div>
+    </div>
+
+    <script>
+        const testimonialsContainer = document.querySelector(".testimonial-container"),
+        testimonial = document.querySelector(".testimonial"),
+        username = document.querySelector(".username"),
+        // userImage=document.querySelector(".user-image"),
+        twitterHandle = document.querySelector(".twitter-handle")
+
+        const testimonials = [
+            {
+                name:"Guillermo Rauch",
+                position:"@rauchg",
+                // photo:"https://unsplash",
+                text:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid ut facere quibusdam fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur ."
+            },
+            {
+                name:"Dacey Nolan",
+                position:"@dacey_nolan",
+                // photo:"https://unsplash",
+                text:"aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur ."
+            },
+            {
+                name:"Sarah Dayan",
+                position:"@frontstuff_io",
+                // photo:"https://unsplash",
+                text:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid ut facere quibusdam fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur .Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid ut facere quibusdam fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur ."
+            },
+            {
+                name:"Dan Molone",
+                position:"@ohhann",
+                // photo:"https://unsplash",
+                text:" adipisicing elit.dle awdw Lorem ipsum et consectetur . Aliquid ut facere Lorem ipsum dolor sit amet consectetur ."
+            },
+            {
+                name:"Sergio Peris",
+                position:"@sertxudev",
+                // photo:"https://unsplash",
+                text:"Ispum dolor lorem Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid ut facere quibusdam fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur .Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid ut facere quibusdam fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, volupta .Lorem ipsum dolor sit amet consectetur, alit. Aliquid ut facere quibusdam fugit, aliquam exercitationem voluptatibus quaerat mollitia, labore omnis dicta, et ab hic voluptate aperiam odit! Vitae, voluptatibus corporis! Lorem ipsum dolor sit amet consectetur ."
+            },
+        ]
+
+        let counter = 1;
+
+        function showNextTestimonial(){
+            const{name,position,text} = testimonials[counter];
+            
+            testimonial.innerHTML = text;
+            // userImage.src = photo
+            username.innerHTML = name;
+            twitterHandle.innerHTML = position
+
+            counter++;
+
+            if(counter > testimonials.length - 1){
+                counter = 0;
+            }
+        }
+        setInterval(showNextTestimonial,10000)
+    </script>
+
+</body>
+
+</html>

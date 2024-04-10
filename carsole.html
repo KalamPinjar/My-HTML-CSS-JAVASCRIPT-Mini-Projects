@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+
+
+
+        .container {
+            position: relative;
+            height: 100vh;
+            /* background: red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: .5rem;
+
+        }
+
+        .imageslider {
+            /* background: orangered; */
+            overflow: hidden;
+            width: 50vw;
+            height: 60%;
+            padding: 0px 30px;
+            position: relative;
+        }
+
+        .img {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            gap: 10px;
+        }
+
+        .img img {
+            position: absolute;
+            padding-left: 10px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            transition: 1s;
+        }
+
+        .next {
+            display: flex;
+            justify-content: flex-end;
+            width: 50%;
+            gap: 10px;
+        }
+
+    
+
+        #preimg {
+            background: url("images/icons/media-control-play-next-dark.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(60deg);
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #nextimg {
+            background: url("images/icons/media-control-play-next-dark.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+           
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="imageslider" value="3">
+
+            <div id="one" class="img">
+
+                <img src="images/walls.jpg">
+
+                <img src="images/space/gallexy1.jpg">
+
+                <img src="images/space/effect1.jpg">
+
+                <img src="images/dragIMG.jpg">
+
+            </div>
+        </div>
+
+        <div class="next">
+
+            <button id="preimg" onclick="prev()" class="active">
+            </button>
+
+            <button id="nextimg" onclick="next()" class="active">
+            </button>
+
+
+        </div>
+    </div>
+
+    <!-- <script src="D:\Kalam\Programming Languages\html\gsap\gsap-public\minified\gsap.min.js"></script> -->
+    <script>
+        const nextImg = document.querySelector("#nextimg"),
+            previousImg = document.querySelector("#preimg"),
+            imgslider = document.querySelector(".imageslider").value,
+            slider = document.querySelector(".imageslider"), //imagecontainer
+            carousel = document.querySelectorAll(".img"),//imagecarousel
+            images = document.querySelectorAll("img");
+        // values = [],
+        // images = [];
+
+        images.forEach((slide, index) => {
+            slide.style.left = `${index * 100}%`
+        })
+
+        let counter = 0;
+
+        const slideImage = () => {
+            images.forEach((e) => {
+                e.style.transform = `translateX(-${counter * 100}%)`
+                
+                
+            })
+        }
+
+        const prev = () => {
+            if (counter > 0) {
+                counter--
+                slideImage();
+                console.log(counter);
+            }
+            else if(counter <= 0){
+                counter=3
+                slideImage();
+            }
+            
+        }
+        const next = () => {
+            if (counter <= (images.length - 2)) {
+                counter++
+                slideImage();
+                console.log(counter);
+            }
+            else if(counter == 3){
+                counter = 0
+                slideImage();
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+</script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1b1b1b;
+        }
+
+        .container {
+            display: flex;
+            background: #292929;
+            padding: 15px;
+            width: 300px;
+            height: 50px;
+            border-radius: 50px;
+            box-shadow: 1px 1px 5px #292929;
+            margin: 10px;
+            position: relative;
+            transition: width 1.5s;
+        }
+
+        .input {
+            margin: 0px 50px;
+            height: 100%;
+            width: 100%;
+            color: white;
+            background: transparent;
+            outline: none;
+            border: none;
+            transition-delay: 0.5s;
+        }
+
+        .container span {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 25px;
+            text-align: center;
+            margin: 0 auto;
+            cursor: pointer;
+            color: #ffa31a;
+        }
+
+        /* JAVASCRIPT */
+        .active.container {
+            width: 70px;
+            display: flex;
+
+        }
+
+        .active .input {
+            width: 0%;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="active container">
+        <span class="search">Search</span>
+        <input type="text" class="input" placeholder="Search..." />
+
+    </div>
+
+    <script>
+        const searchContainer = document.querySelector(".container"),
+            search = document.querySelector(".search")
+
+        search.addEventListener("click", () => {
+            searchContainer.classList.toggle("active");
+
+        })
+    </script>
+
+</body>
+
+</html>

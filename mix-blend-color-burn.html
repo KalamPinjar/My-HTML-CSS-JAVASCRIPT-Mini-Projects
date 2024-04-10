@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        html {
+            cursor: none;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            min-block-size: 100svh;
+            background: black;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+            }
+        }
+
+        .cursor {
+            &::before {
+                content: '';
+                position: absolute;
+                left: var(--x, 0px);
+                top: var(--y, 0px);
+                translate: -50% -50%;
+                width: 200px;
+                aspect-ratio: 1;
+                background: white;
+                border-radius: 100vw;
+                filter: blur(2rem);
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background:radial-gradient(lime, transparent 30%), conic-gradient(
+                        red,
+                        blue,
+                        green,
+                        yellow,
+                        purple,
+                        magenta,
+                        cyan,
+                        yellow,
+                        orangered,
+                        red);
+                mix-blend-mode:color-burn;
+                animation: rotateHue 10s linear infinite;
+                /* opacity: 0.2; */
+            }
+        }
+
+        @keyframes rotateHue {
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+    <script>
+        const cursor = document.querySelector(".cursor")
+        document.addEventListener('mousemove', (e) => {
+            let x = e.offsetX;
+            let y = e.offsetY;
+
+            cursor.style.setProperty("--x", x + "px")
+            cursor.style.setProperty("--y", y + "px")
+        })
+
+    
+    </script>
+</body>
+
+</html>

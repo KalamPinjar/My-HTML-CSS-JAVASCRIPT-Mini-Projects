@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .outer-heading {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-text {
+            font-size: 45px;
+        }
+
+        .inner-heading {
+            border: 0px solid #ddd;
+            height: 50px;
+            line-height: 50px;
+            font-size: 35px;
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+
+        .inner-heading span {
+            position: relative;
+            color: crimson;
+            animation: anime 10s ease infinite;
+        }
+
+        @keyframes anime {
+
+            0%,
+            100%,
+            20% {
+                top: 0;
+            }
+
+            25%,
+            45% {
+                top: -50px;
+            }
+
+            50%,
+            70% {
+                top: -100px;
+            }
+
+            75%,
+            99% {
+                top: -150px;
+            }
+
+        }
+
+        @media screen AND (width < 768px) {
+            .main-text {
+                font-size: 25px;
+            }
+
+            .inner-heading {
+                border: 0px solid #ddd;
+                height: 50px;
+                line-height: 50px;
+                font-size: 15px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-heading">
+        <h1 class="main-text">We Provide,
+            <div class="inner-heading">
+                <span>
+                    Text Encryption <br />
+                    Image Encryption <br />
+                    Password Encryption <br />
+                    And Many Other Types Of Cryptographic Tools. <br />
+                </span>
+            </div>
+        </h1>
+    </div>
+
+</body>
+
+</html>

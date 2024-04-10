@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="password" id="password" />
+    <span id="pass">x</span>
+    <script>
+        let showPass = document.getElementById("pass")
+        let input = document.getElementById("password")
+        showPass.addEventListener("click", () => {
+            if(input.type==='password'){
+                input.type='text'
+            }
+            else{
+                input.type='password'
+            }
+
+        })
+    </script>
+</body>
+
+</html>

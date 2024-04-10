@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+
+    <style>
+        html,body{
+            color:white; 
+        }
+
+        .container {
+            height: 200px;
+            position: relative;
+        }
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #btn {
+            text-decoration: none;
+            /* color: rgba(255, 255, 255, 0.8);
+                background: rgb(145, 92, 182); */
+            padding: 15px 40px;
+            border-radius: 4px;
+            font-weight: normal;
+            text-transform: uppercase;
+            transition: all 0.2s ease-in-out;
+
+            padding: 10px;
+            border: 2px red solid;
+            border-radius: 10px;
+            color: white;
+            background-color: black;
+        }
+
+
+        #btn:hover {
+            border: 0.5px solid;
+            padding: 10px;
+            box-shadow: red 1px 1px 15px, blue 1px 1px 15px;
+            /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+            margin: 20px;
+            /* background-color: rgb(60, 255, 70); */
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <h2>QuerySelectorAll() Method </h2>
+    <p>Add a Background Color to all the elements with Class: example</p>
+
+    <h1 class="example">Heading1</h1>
+    <p class="example">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam fugit illum vero, aspernatur
+        aperiam ipsa amet impedit, quibusdam quos, possimus commodi voluptas sint cupiditate quam hic ut quisquam! Sint,
+        at.</p>
+    <div class="container">
+        <div class="center">
+            <button id="btn">Change Background</button>
+        </div>
+    </div>
+
+    <script src="scriptEX3CH9.js">
+    </script>
+
+    <script>
+        document.body.style.background = "black"
+        // document.body.style.color="red"
+        document.getElementsByClassName("example")[0].style.color = "black"
+        document.getElementsByClassName("example")[1].style.color = "black"
+
+
+        const nodeList = document.querySelectorAll(".example")
+        for (let i = 0; i < nodeList.length; i++) {
+            nodeList[i].style.backgroundColor = "rgb(60, 255, 70)"
+        }
+
+
+        let change = document.getElementById("btn"),
+            colors = ["purple", "Green", "blue", "black"]
+        index = 0
+
+        change.addEventListener('click', () => {
+            document.body.style.backgroundColor = colors[index]
+            index = (index + 1) % colors.length
+        })
+
+    </script>
+</body>
+
+</html>

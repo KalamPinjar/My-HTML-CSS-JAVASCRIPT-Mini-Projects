@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        let answer;
+        let attempts = 0
+        let guess;
+        let running = true;
+        min = 50;
+        max = 100;
+
+        answer = Math.floor(Math.random() * (max - min)) + min;
+
+        console.log(answer)
+
+
+        while (running) {
+            guess = window.prompt(`Enter Your Answer: ${min} - ${max}`);
+            guess = Number(guess);
+
+            if (isNaN(guess)) {
+                attempts++
+                window.alert("Please Enter A Valid Number")
+            }
+
+            else if (guess < min && guess > max) {
+                attempts++
+                window.alert("Please Enter A Valid Number")
+            }
+
+            else {
+                attempts++
+                if (guess < answer) {
+                    window.alert("Your Guess is Lower, TRY AGAIN")
+                }
+                else if (guess > answer) {
+                    window.alert("Your Guess is Higher, TRY AGAIN")
+                }
+                else {
+                    window.alert(`Correct YOU WON NOTHING! and took ${attempts} guess!`)
+                    running = false;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html{
+            color-scheme: light dark;
+        }
+        body{
+            height: 100vh;
+        }
+        .container {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            position: relative;
+
+        }
+        #content{
+            background: rgba(212, 212, 216,0.12);
+            height: 50vh;
+            width: 50%;
+            position: relative;
+            display:flex;
+            text-wrap: wrap;
+            flex-wrap: wrap;
+            box-shadow: inset 0 1px 5px rgba(255, 255, 255, 0.5),
+            0 1px 10px rgba(255, 255, 255, 0.5),
+            0 1px 20px rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            font-size: larger;
+            gap: 1rem;
+
+        }
+        #weak{
+            position: relative;
+            left: 20%;
+            color:red;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        #medium{
+            position: relative;
+            left: 20%;
+            color:yellow;
+            font-weight: bold;
+        }
+        #strong{
+            position: relative;
+            left: 20%;
+            color:green;
+            font-weight: bold;
+        }
+        #funny{
+            position: relative;
+            left: 20%;
+            color:color-mix(in hsl shorter hue, rgb(0, 17, 255) 65%, rgb(128, 94, 0) 90%);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="content">
+            <div id="weak"></div>
+            <div id="medium"></div>
+            <div id="strong"></div>
+            <div id="funny"></div>
+        </div>
+    </div>
+
+    <script>
+        const chars = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%&@^*(){+-}/~'";?!`
+        const randomChar = () => chars[Math.floor(Math.random() * (chars.length - 1))],
+            randomString = length => Array.from(Array(length)).map(randomChar).join("")
+        // console.log(chars.length - 1)
+
+        class Password {
+
+            constructor(randomString) {
+                this.randomString = randomString
+                console.log(randomString)
+            }
+
+            weakPassword() {
+                function filterElement(element) {
+                    const regex = /^[a-z]*$/
+                    return regex.test(element);
+                }
+
+                const elements = randomString(len - 72)
+                const arrayofvalues = Object.values(elements)
+                console.log(arrayofvalues + ' Original Value Before Filter')
+                const filteredElements = arrayofvalues.filter(filterElement);
+                console.log("weak password(AFTER FILTER)")
+                const weakpass = filteredElements.join('')
+                console.log(weakpass);
+                const div =document.getElementById("weak")
+                div.textContent += `Weak Password : ${weakpass}`
+
+
+            }
+            mediumPassword() {
+                function filterElement(element) {
+                    const regex = /^[a-zA-Z0-9]*$/
+                    return regex.test(element);
+                }
+
+                const elements = randomString(len - 70)
+                const arrayofvalues = Object.values(elements)
+                console.log(arrayofvalues + ' Original Value Before Filter')
+                const filteredElements = arrayofvalues.filter(filterElement);
+                console.log("medium password(AFTER FILTER)")
+
+                const mediumpass = filteredElements.join('')
+                console.log(mediumpass);
+
+                const div = document.getElementById("medium")
+                div.textContent += `Medium Password : ${mediumpass}`
+
+            }
+            strongPassword() {
+                function filterElement(element) {
+                    const regex = /^[a-zA-Z0-9-!#$%&@^*(){+-}/~'";?!]*$/
+                    return regex.test(element);
+                }
+
+                const elements = randomString(len - 65)
+                const arrayofvalues = Object.values(elements)
+                console.log(arrayofvalues + ' Original Value Before Filter')
+                const filteredElements = arrayofvalues.filter(filterElement);
+                console.log("strong password(AFTER FILTER)")
+
+                const strongpass = filteredElements.join('')
+                console.log(strongpass);
+
+                const div = document.getElementById("strong")
+                div.textContent += `Strong Password : ${strongpass}`
+
+            }
+            funnyPassword() {
+                const funnyArray = ["password", "enteryourpassword", "idonthaveanypassword", "iforgotthepassword", "funnypassword", "getawayfromhere",
+                    "mypasswordisfunny", "youcanthackmypassword", "nevertellyournextmove", "yourphonenumber"]
+                const funnyRandom = Math.floor(Math.random() * funnyArray.length)
+                const funnyPass = funnyArray[funnyRandom]
+
+                console.log(funnyPass)
+
+                const div = document.getElementById("funny")
+                div.textContent += `Funny Password : ${funnyPass}`
+
+            }
+
+        }
+
+        let len = chars.length - 1
+
+        let p = password = new Password(randomString(len))
+        const weak = p.weakPassword(),
+            medium = p.mediumPassword(),
+            strong = p.strongPassword(),
+            funny = p.funnyPassword()
+
+
+
+    </script>
+</body>
+
+</html>

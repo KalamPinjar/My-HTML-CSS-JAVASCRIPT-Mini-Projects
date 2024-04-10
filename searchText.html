@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 30px;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.548);
+        }
+
+        #searchBox {
+            width: 50%;
+            height: 50px;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        #input {
+            width: 80%;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+
+        #searchBtn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            background: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .content-container {
+            width: 90%;
+            color: #fff;
+            font-size: 20px;
+            padding-top: 20px;
+
+            text-align: justify;
+            max-width: 700px;
+            margin-top: 20px;
+            font-family: sans-serif;
+
+            /* Javascript */
+
+            mark {
+                background: crimson;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="searchBox">
+        <input type="text" name="input" id="input" placeholder="Search" />
+        <button id="searchBtn">Search</button>
+
+    </div>
+
+    <div class="content-container" id="content">
+        <p id="p">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis necessitatibus iusto eum explicabo,
+            dolores eaque dicta ea, accusantium voluptatum modi praesentium omnis alias debitis? Magnam maxime ab
+            doloribus omnis rem? Ducimus hic earum et ex, itaque aut sed maiores, vero totam nesciunt perferendis
+            repudiandae nisi. Blanditiis fuga amet aliquam fugiat dolorem distinctio obcaecati facere aperiam dolor
+            suscipit, autem molestias minus consectetur qui doloribus at doloremque officia corporis sapiente accusamus
+            neque voluptates in. Tempora laudantium expedita facilis nostrum. Sunt deserunt pariatur iusto saepe iure
+            aliquam aliquid delectus, aut laboriosam eveniet qui autem dignissimos. Pariatur dolorem nesciunt animi
+            ullam voluptate aspernatur id?
+        </p>
+    </div>
+
+
+    <script>
+
+        const p = document.getElementById("p")
+        const searchBtn = document.getElementById("searchBtn")
+
+
+        searchBtn.addEventListener("click", () => {
+            let input = document.getElementById("input").value
+
+            if (input !== "") {
+                let regExp = new RegExp(input, "gi");
+                p.innerHTML = p.textContent.replace(regExp, "<mark>$&</mark>")
+            }
+        })
+    </script>
+</body>
+
+</html>

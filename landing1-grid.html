@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+
+            height: 100vh;
+            background: #111111;
+        }
+
+        nav {
+            background: midnightblue;
+            height: 10vh;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            /* overflow: hidden; */
+        }
+
+        .heading {
+            height: calc(100vh - 10vh);
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: rgb(0, 0, 0);
+            padding: 10px;
+        }
+
+        .heading h2 {
+            font-size: 3rem;
+            text-align:  center;
+        }
+
+        .heading p {
+            font-size: clamp(0.95rem, 1.2rem, 1.8rem);
+            margin-top: 10px;
+            text-align: center;
+            letter-spacing: 0.41px;
+            line-height: 1.4rem;
+            word-spacing: 1.2px;
+        }
+
+        .container-img {
+            height: calc(100vh - 10vh);
+            width: 50%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(180px, 1fr));
+            gap: 0.15rem;
+
+            grid-template-areas:
+                'a space1'
+                'a b'
+                'c b'
+                'c d'
+                'e d'
+                'e f'
+                'space2 f';
+
+        }
+
+        .card {
+            text-align: center;
+            margin: 1px;
+        }
+
+
+        .container-img .space1 {
+            grid-area: 1/2;
+        }
+
+        .container-img .a {
+            grid-row: 1/3;
+        }
+
+        .container-img .b {
+            grid-row: 2/4;
+        }
+
+        .container-img .c {
+            grid-row: 3/5;
+        }
+
+        .container-img .d {
+            grid-row: 4/6;
+        }
+
+        .container-img .e {
+            grid-row: 5/7;
+        }
+
+        .container-img .f {
+            grid-row: 6/8;
+        }
+
+        .container-img .space2 {
+            grid-area: 7;
+        }
+
+        .container-img .card {
+            object-fit: cover;
+            background-position: center;
+        }
+        
+        .space{
+            height: 100vh;
+            background: black;
+        }
+
+
+        @media (width<900px) {
+            .container-img {
+                height: calc(100vh - 10vh);
+                width: 50%;
+                display: grid;
+                grid-template-columns: repeat(1, minmax(180px, 1fr));
+                gap: 0.15rem;
+
+                grid-template-areas:
+                    'a'
+                    'b'
+                    'c'
+                    'd'
+                    'e'
+                    'f';
+
+            }
+
+            .card {
+                text-align: center;
+                margin: 1px;
+                border-radius: 5px;
+            }
+
+
+            .container-img .a {
+                grid-row: 1/auto;
+            }
+
+            .container-img .b {
+                grid-row: 2/auto;
+            }
+
+            .container-img .c {
+                grid-row: 3/auto;
+            }
+
+            .container-img .d {
+                grid-row: 4/auto;
+            }
+
+            .container-img .e {
+                grid-row: 5/auto;
+            }
+
+            .container-img .f {
+                grid-row: 6/auto;
+            }
+
+            .container-img .space2 {
+                grid-area: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar"></div>
+    </nav>
+    <div class="container">
+        <div class="heading">
+            <h2>CSS GRID LAYOUT</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique tempore perspiciatis magnam quibusdam
+                hic quod quae debitis modi aliquam temporibus aperiam, unde nulla vel. Maiores culpa aliquid accusamus
+                provident magnam.
+            </p>
+        </div>
+        <div class="container-img">
+            <div class="card space1"></div>
+            <div class="a card" style="background-image: url(images/green-gallary/codegif.gif);"></div>
+            <div class="b card" style="background-image: url(images/background-flower.jpg);"></div>
+            <div class="c card" style="background-image: url(images/green-gallary/dark-green-black-amoled.jpg);"></div>
+            <div class="card d" style="background-image: url(images/passage.jpg);"></div>
+            <div class="card e" style="background-image: url(images/walls.jpg);"></div>
+            <div class="card f" style="background-image: url(images/green-gallary/drops-green.jpg);"></div>
+            <div class="card space2"></div>
+        </div>
+
+
+    </div>
+    <div class="space"></div>
+
+</body>
+
+</html>

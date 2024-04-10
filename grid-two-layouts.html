@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+
+        }
+
+        .container-implict {
+            overflow: hidden;
+            color: white;
+            height: 100vh;
+            position: relative;
+            background: #161616;
+            display: grid;
+            gap: 0.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-rows: 140px;
+        }
+
+
+        .card-tall {
+            grid-row: span 3/auto;
+        }
+
+        .card-wide {
+            grid-column: span 3/auto;
+        }
+
+
+
+        .space {
+            height: 100vh;
+            background: black;
+        }
+
+        .container-grid-explict {
+            overflow: hidden;
+            display: grid;
+            padding-bottom: 20px;
+            padding-top: 10px;
+            height: 100vh;
+            background: #161616;
+            gap: 0.25rem;
+
+            grid-template-areas:
+                'a b c d'
+                'l blk blk e'
+                'k blk blk f'
+                'j i h g';
+
+            grid-template-columns: 240px auto auto 240px;
+            --stagger-delay: 100ms
+        }
+
+        .container-grid-explict .card {
+            animation: cardanimation 1s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        .card:hover {
+            transition: ease 200ms;
+            transform: scale(1.05);
+        }
+
+        @keyframes cardanimation {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+                filter: hue-rotate(280deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: hue-rotate(0deg);
+
+            }
+
+        }
+
+        .container-grid-explict .card:nth-child(1) {
+            grid-area: a;
+            animation-delay: calc(1 * var(--stagger-delay));
+        }
+
+        .container-grid-explict .card:nth-child(2) {
+            grid-area: b;
+            animation-delay: calc(2 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(3) {
+            grid-area: c;
+            animation-delay: calc(3 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(4) {
+            grid-area: d;
+            animation-delay: calc(4 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(5) {
+            grid-area: e;
+            animation-delay: calc(5 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(6) {
+            grid-area: f;
+            animation-delay: calc(6 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(7) {
+            grid-area: g;
+            animation-delay: calc(7 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(8) {
+            grid-area: h;
+            animation-delay: calc(8 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(9) {
+            grid-area: i;
+            animation-delay: calc(9 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(10) {
+            grid-area: j;
+            animation-delay: calc(10 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(11) {
+            grid-area: k;
+            animation-delay: calc(11 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:nth-child(12) {
+            grid-area: l;
+            animation-delay: calc(12 * var(--stagger-delay));
+
+        }
+
+        .container-grid-explict .card:last-child {
+            grid-area: blk;
+            background: red;
+            animation-delay: calc(13 * var(--stagger-delay));
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-implict">
+        <div class="card card-tall" style="background-image: url(images/green-gallary/codegif.gif);">1</div>
+        <div class=" card card-wide" style="background-image: url(images/background-flower.jpg);">2</div>
+        <div class="card card-tall" style="background-image: url(images/green-gallary/dark-green-black-amoled.jpg);">3</div>
+        <div class=" card card-tall" style="background-image: url(images/passage.jpg);">4</div>
+        <div class=" card card-wide" style="background-image: url(images/walls.jpg);">5</div>
+        <div class="card card-wide" style="background-image: url(images/green-gallary/drops-green.jpg);">6</div>
+        <div class=" card card-wide" style="background-image: url(images/green-gallary/green-white-leaf.jpg);">7</div>
+        <div class="card card-wide" style="background-image: url(images/space/water-circle.jpg);">8</div>
+        <div class="card card-wide" style="background-image: url(images/space/effect1.jpg);">9</div>
+
+    </div>
+
+
+    <div class="space"></div>
+
+    <div class="container-grid-explict">
+        <div class="a card" style="background-image: url(images/green-gallary/codegif.gif);">1</div>
+        <div class="b card" style="background-image: url(images/background-flower.jpg);">2</div>
+        <div class="c card" style="background-image: url(images/green-gallary/dark-green-black-amoled.jpg);">3</div>
+        <div class="card d" style="background-image: url(images/passage.jpg);">4</div>
+        <div class="card e" style="background-image: url(images/walls.jpg);">5</div>
+        <div class="card f" style="background-image: url(images/green-gallary/drops-green.jpg);">6</div>
+        <div class="card g" style="background-image: url(images/green-gallary/green-white-leaf.jpg);">7</div>
+        <div class="card h" style="background-image: url(images/space/water-circle.jpg);">8</div>
+        <div class="card i" style="background-image: url(images/space/effect1.jpg);">9</div>
+        <div class="card j" style="background-image: url(images/space/red-gallexy.jpg);">10</div>
+        <div class="card k" style="background-image: url(images/space/beautiful-planets.jpg);">10</div>
+        <div class="card l" style="background-image: url(images/space/pink-gallexy.jpg);">11</div>
+        <div class="blk card">12</div>
+
+    </div>
+
+    <div class="space"></div>
+</body>
+
+</html>

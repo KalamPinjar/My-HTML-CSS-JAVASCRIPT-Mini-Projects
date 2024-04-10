@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --modal-duration: 1s;
+            --primary-btn-clr: hsl(207, 91%, 13%);
+
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            height: 100vh;
+            transition: transform 0.3s ease;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/green-gallary/TECHNOLOGY\ DESKTOP\ WALLPAPER.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .content h1 {
+            font-size: 4rem;
+
+        }
+
+        .content p {
+            width: 600px;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 24px;
+        }
+
+        .cta-btn {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            outline: none;
+            border: none;
+
+            background: var(--primary-btn-clr);
+            color: white;
+            cursor: pointer;
+            box-shadow: 1px 10px 10px black;
+            transition: all 0.5s;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .modal-container {
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .modal {
+            background: var(--primary-btn-clr);
+            border-radius: 5px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            overflow: hidden;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            width: 400px;
+        }
+
+        .modal-content {
+            padding: 10px 15px;
+        }
+
+        .modal-content h1 {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        .modal-form div {
+            margin: 20px 0;
+        }
+
+        .modal-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .modal-form .form-input {
+            padding: 10px;
+            width: 100%;
+            background: white;
+        }
+
+        #close {
+            background: transparent;
+            border: none;
+            font-size: 25px;
+            position: absolute;
+            top: 0px;
+            right: 12px;
+            cursor: pointer;
+        }
+
+        
+
+        .submit-btn {
+            background: transparent;
+            border: 2px solid white;
+            padding: 10px 30px;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            left: calc(40% - 15px);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: ease 0.2s;
+            margin: 10px 0;
+
+        }
+
+        .submit-btn:hover {
+            scale: 1.05;
+            background: white;
+            color:var(--primary-btn-clr)
+        }
+
+        /* javascript */
+
+        .modal-container.show-modal {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="content">
+            <h1>Welcom to Website</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque dicta repudiandae sed temporibus
+                perferendis nesciunt doloribus labore? Perferendis est eveniet quibusdam id. Atque labore consectetur
+                temporibus aliquam sint pariatur aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                voluptatem, et quisquam voluptates iste rerum sit soluta maxime, sunt sint facere dignissimos possimus
+                iure, vel ducimus odio mollitia ea laborum.</p>
+            <button class="cta-btn" id="open">Sign Up</button>
+        </div>
+    </header>
+
+    <section class="modal-container" id="modal">
+        <section class="modal"><button class="modal-content" id="close">x</button>
+            <div class="modal-content">
+                <h1>Sign Up</h1>
+                <form action="" class="modal-form">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter Name" class="form-input" />
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" placeholder="Enter Email" class="form-input" />
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="text" id="password" placeholder="Enter Password" class="form-input" />
+                    </div>
+                    <div>
+                        <label for="password2">Comfirm Password</label>
+                        <input type="text" id="password2" placeholder="Enter Comfirm Password" class="form-input" />
+                    </div>
+                    <input type="submit" value="submit" class="submit-btn">
+                </form>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        const close = document.getElementById("close")
+        const open = document.getElementById("open")
+        const modal = document.getElementById("modal")
+
+       open.addEventListener('click', ()=> modal.classList.add('show-modal')) 
+       close.addEventListener('click',()=> modal.classList.remove('show-modal'))
+       window.addEventListener('click', e=>{
+        e.target === modal ? modal.classList.remove('show-modal') : false
+       })
+    </script>
+</body>
+
+</html>

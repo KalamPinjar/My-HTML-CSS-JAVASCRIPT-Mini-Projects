@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-clr: aquamarine;
+            --seconday-clr: rgb(98, 192, 250);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(var(--primary-clr), var(--seconday-clr));
+            font-family: sans-serif;
+        }
+
+        .image-container {
+            height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img {
+            width: 250px;
+            height: 250px;
+            margin: 10px;
+            border: 1px solid;
+        }
+
+        .img-one {
+            background: url(images/The\ Best\ UX_UI\ Design\ Grey\ Green.jpeg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .img-two {
+            background: url(images/red_flower.jpg);
+            background-position: bottom;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            padding: 0.5vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        article {
+            padding: 20px 0;
+        }
+
+        article h2 {
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        article p {
+            max-width: 700px;
+            text-align: center;
+            padding: 10px 0;
+            line-height: 22px;
+        }
+
+
+        .menu {
+            cursor: pointer;
+            position: fixed;
+            inset: 0;
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1.25rem;
+            background: linear-gradient(var(--seconday-clr), var(--primary-clr));
+            clip-path: circle(20px at calc(100vw - 5vw) 31px);
+            transition: clip-path 0.5s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+        }
+
+        menu li {
+            position: relative;
+            z-index: 5;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: rgb(189, 222, 250);
+            text-shadow: 1px 1px 5px black;
+            font-weight: bold;
+            width: 120px;
+            font-size: 1.125rem;
+            padding: 5px;
+        }
+
+        .btn {
+            position: absolute;
+            top: 20px;
+            left: calc(100vw - 5vw);
+            transform: translateX(-50%);
+            cursor: pointer;
+            z-index: 9;
+        }
+
+        .btn>span {
+            width: 5px;
+            height: 5px;
+            display: block;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin-bottom: 3px;
+        }
+
+        .highlight {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            background: transparent;
+            border: 2px solid;
+            transition: transform 0.3s;
+        }
+
+        .space {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="menu">
+        <li><a href="">HOME</a></li>
+        <li><a href="">PRODUCTS</a></li>
+        <li><a href="">CONTACT</a></li>
+        <li><a href="">ABOUT</a></li>
+        <li><a href="">LOGIN</a></li>
+
+
+        <div class="btn" data-open="close">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="highlight"></div>
+    </ul>
+
+    <div class="image-container">
+        <div class="img img-one"></div>
+        <div class="img img-two"></div>
+    </div>
+
+    <div class="container">
+        <article>
+            <h2>Welcom To Our Website</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus a hic veritatis ratione fuga
+                molestiae optio impedit ipsa quas dolor reprehenderit minus corporis voluptates enim nihil, sed quae
+                sequi delectus.</p>
+        </article>
+    </div>
+
+    <div class="space"></div>
+
+
+    <script>
+        const menu = document.querySelector(".menu"),
+            links = document.querySelectorAll("li"),
+            highlight = document.querySelector(".highlight"),
+            btn = document.querySelector(".btn");
+
+        btn.addEventListener('click', function () {
+            if (this.dataset.open === 'close') {
+                menu.style.clipPath = "circle(100% at 50% 50%)";
+                this.dataset.open = "open";
+
+            } else {
+                menu.style.clipPath = "";
+                this.dataset.open = "close";
+                highlight.style = "";
+            }
+        })
+
+        links.forEach(link => {
+            link.addEventListener('pointerover', function () {
+                const w = this.offsetWidth,
+                    h = this.offsetHeight,
+                    t = this.offsetTop;
+                highlight.style.cssText = `transform: translateY(${t}px) ; 
+                width: 120px; height: 25px`
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            overflow: hidden;
+            background: black;
+        }
+
+
+        #blob {
+            background-color: white;
+            background: linear-gradient(to right, rgb(21, 241, 168),
+                    rgb(93, 31, 216));
+            height: 10vmax;
+            aspect-ratio: 1;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+
+            position: absolute;
+            translate: (-50%, -50%);
+            animation: rotate 10s infinite;
+        }
+
+
+        @keyframes rotate {
+            from {
+                rotate: 0deg;
+            }
+
+            50% {
+                scale: 1 1.5;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+
+        }
+
+        #blur {
+            height: 100vmax;
+            width: 100vmax;
+            position: absolute;
+            z-index: 2;
+            backdrop-filter: blur(80px);
+        }
+
+        h1 {
+            padding:0rem clamp(1rem,2vw,3rem);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+            font-size: clamp(3rem, 10vw, 10rem);
+            color: white;
+            margin: 0rem;
+            white-space: nowrap;
+            z-index: 3;
+            border-radius: clamp(0.4rem, 0.75rem, 0.75vw, 1rem);
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="blob">
+    </div>
+    <div id="blur">
+    </div>
+    <h1 data-value="KALAM">KALAM</h1>
+
+
+
+
+    <script>
+
+        const blob = document.getElementById("blob")
+
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event
+
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+
+            }, { duration: 3000, fill: "forwards" })
+        }
+
+
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+        let interval = null
+
+        document.querySelector("h1").onmouseover = event => {
+            let iteration = 0
+
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+
+                event.target.innerText = event.target.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return event.target.dataset.value[index];
+
+                        }
+                        return letters[Math.floor(Math.random() * 26)]
+                    })
+                    .join("");
+
+                if (iteration >= event.target.dataset.value.length) {
+
+                    clearInterval(interval)
+                }
+                iteration += 1 / 3;
+            }, 50);
+        }
+
+    </script>
+</body>
+
+</html>

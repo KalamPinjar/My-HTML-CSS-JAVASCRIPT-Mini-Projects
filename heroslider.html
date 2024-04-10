@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url(D:/Kalam/html/Courier_Prime,Great_Vibes,Lato,Playfair_Display);
+
+        :root {
+            --dark: rgb(20, 20, 20);
+            --yellow: rgb(253, 216, 53);
+            --blue: rgb(98, 0, 234);
+
+            --c1: rgb(3, 7, 18);
+            --c2: rgb(163, 230, 53);
+
+            --left-color: var(--c1); 
+            --right-color:var(--c2);
+        }
+
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+        }
+
+
+        .side {
+            display: grid;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            place-items: center;
+            position: absolute;
+            word-wrap: break-word;
+            
+        }
+
+
+        .side .title{
+            font-family: "Montserrrat", sans-serif;
+            font-size: 7vw;
+            font-weight: 800;
+            margin: 0px 10vw;
+            width: 80vw;
+        }
+
+        .side .fancy{
+            font-family: "Permanent Marker" ,cursive;
+            font-size: 1.8em;
+            line-height: 0.6em;
+        }
+
+        #left{
+            background-color: var(--left-color);
+            width: 60%;
+            z-index: 2;
+
+        }
+
+        #left .title{
+            color:white
+        }
+
+        #left .fancy{
+            color: var(--right-color);
+
+        }
+
+        #right {
+            background-color: var(--right-color);
+        }
+
+        #right .title{
+            color:var(--dark)
+        }
+
+        #right .fancy{
+            color:white;
+        }
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="side" id="left">
+        <h2 class="title">
+            Lorem ipsum dolor sit amet consectetur.
+            <span class="fancy">Online.</span>
+
+        </h2>
+    </div>
+
+    <div class="side" id="right">
+        <h2 class="title">
+            Lorem ipsum dolor sit amet consectetur.
+            <span class="fancy">Offline.</span>
+
+        </h2>
+    </div>
+
+
+    <script>
+        const left = document.getElementById("left")
+        const handleOnMove = e => {
+            const p = e.clientX / window.innerWidth * 100;
+
+            left.style.width = `${p}%`;
+
+        }
+
+        document.onmousemove = e => handleOnMove(e);
+        document.ontouchmove = e => handleOnMove(e.touches[0])
+
+    </script>
+</body>
+
+</html>

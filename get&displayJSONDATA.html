@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET and DISPLAY JSON data</title>
+</head>
+<body>
+    <h1>USERS:</h1>
+    <ul></ul>
+
+<script>
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res=>{
+        return res.json()
+
+    }).then(data =>{
+        data.forEach(user =>
+        {
+            const markup = `<li>${user.name}</li>`;
+            document.querySelector("ul").insertAdjacentElement('beforeend', markup);
+        })
+    }).catch(error => console.log(error));
+
+</script>
+</body>
+</html>

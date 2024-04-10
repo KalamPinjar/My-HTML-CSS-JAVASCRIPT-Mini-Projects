@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background: linear-gradient(mediumslateblue, mediumturquoise);
+            font-family: sans-serif;
+        }
+
+        .content {
+            padding: 4rem;
+
+        }
+
+        section {
+            border: 1px solid;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        section h1 {
+            margin: 20px 0;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            height: 5px;
+            width: calc(100% - 2em);
+            
+            top: 1px;
+            left: 1em;
+            border-radius: 3px;
+            z-index: 99;
+
+        }
+
+        .scroll-indicator .progress {
+            height: 100%;
+            /* width: 0; */
+            /* transition: width 0.3s; */
+            width: 100%;
+            border-radius: 3px;
+            background: linear-gradient(30deg, #3021fd, #ae00ff 90%,red  );
+            transform-origin: left;
+            scale: 0 1;
+
+            animation: scroll-tracker linear;
+            animation-timeline: scroll();
+        }
+        @keyframes scroll-tracker {
+            to{scale: 1 1;}
+        }
+
+        /* test */
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+        <section>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, aspernatur sit minus maiores impedit
+                facilis. Quos dolorum voluptas est quae cumque commodi sequi voluptatibus magnam voluptate veritatis
+                labore harum in obcaecati odit numquam, neque repellendus? Quia, natus sequi voluptatibus, optio at
+                provident nam fugiat, distinctio reprehenderit earum et illo asperiores!</p>
+        </section>
+    </div>
+
+    <div class="scroll-indicator">
+        <div class="progress"></div>
+    </div>
+
+    <script>
+
+        // let indicator = document.querySelector(".scroll-indicator .progress")
+        // let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+        // window.addEventListener('scroll', scroll)
+
+        // function scroll(){
+        //     let scrollTop = document.documentElement.scrollTop
+        //     let scrolled = (scrollTop / scrollHeight) * 100;
+        //     indicator.style.width= `${scrolled}%`
+        // }
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            position: relative;
+        }
+
+        .container{
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: whitesmoke;
+        }
+        .container h2{
+            font-size: 8rem;
+            background: linear-gradient(90deg,red,orange,blue,purple,green,yellow);
+            background-clip: text;
+            color:transparent;
+            z-index: 9;
+        }   
+        .container h2::before{
+            content: 'HELLO WORLD';
+            position: absolute;
+            font-size: 8rem;
+            background: linear-gradient(90deg,red,orange,blue,purple,green,yellow);
+            background-clip: text;
+            color:white;
+            translate:-12px -12px;
+            z-index: -99;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 --data-text="HELLO WORLD">HELLO WORLD</h2>
+    </div>
+
+</body>
+
+</html>

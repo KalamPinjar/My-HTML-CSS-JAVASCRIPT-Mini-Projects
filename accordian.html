@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(royalblue, rgb(0, 71, 202));
+            height: 100vh;
+        }
+
+        .accordUl {
+            margin: 100px auto;
+            width: fit-content;
+        }
+
+        .accordUl li {
+            list-style-type: none;
+            width: 100%;
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+
+        }
+
+        .accordUl li label {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+
+        .accordUl label + input[type="radio"] {
+            display: none;
+        }
+
+        .accordUl li label span {
+            rotate: 90deg;
+            font-size: 25px;
+
+        }
+
+        .accordUl .content{
+            padding: 0 10px;
+            line-height: 26px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s;
+
+        }
+
+        .accordUl label + input[type="radio"]:checked + .content{
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="accordUl">
+        <li>
+            <label for="first">what is Html?
+                <span>&#x3e;</span>
+            </label>
+            <input type="radio" id="first" name="accordion" checked />
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci molestias ratione
+                    sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci
+                    molestias ratione sint accusantium?</p>
+            </div>
+        </li>
+        <li>
+            <label for="second">what is Css?
+                <span>&#x3e;</span>
+            </label>
+            <input type="radio" id="second" name="accordion" />
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci molestias ratione
+                    sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci
+                    molestias ratione sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci molestias ratione
+                    sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci
+                    molestias ratione sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci molestias ratione
+                    sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci
+                    molestias ratione sint accusantium?</p>
+            </div>
+        </li>
+        <li>
+            <label for="third">what is Javascript?
+                <span>&#x3e;</span>
+            </label>
+            <input type="radio" id="third" name="accordion" />
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci molestias ratione
+                    sint accusantium?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae libero adipisci
+                    molestias ratione sint accusantium?</p>
+            </div>
+        </li>
+    </ul>
+
+</body>
+
+</html>

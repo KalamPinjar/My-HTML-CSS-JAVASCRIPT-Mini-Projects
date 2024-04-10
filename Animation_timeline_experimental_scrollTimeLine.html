@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: dark;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        .container {
+            height: 100vh;
+            border: 1px solid;
+            display: grid;
+
+        }
+
+
+        .heading {
+            font-size: 2rem;
+            width: 40%;
+        }
+
+        .heading-page1 {
+            left: 35%;
+            top: 20%;
+            width: 40%;
+            position: absolute;
+        }
+
+
+
+        .page1:not(.heading-page1) {
+            overflow: hidden;
+            background: url(images/unnamed/complex-algorithm-in-green-color-with-formulas-and-cipher-text--cinematic-4k-epic-steven-spielber-731555793.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            border: 2px red solid;
+
+            animation: expand linear forwards;
+            animation-timeline: view();
+            transition: 0.5s ease-in-out;
+            animation-range: exit 100px;
+        }
+
+
+        @keyframes expand {
+            to {
+
+                transform: scaleY(1.8);
+                opacity: 0;
+            }
+        }
+
+        .page2 {
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 20% 0;
+        }
+
+        .page2 .img-section {
+            margin: 5% 0;
+            height: 350px;
+            width: 300px;
+            object-fit: cover;
+
+
+            scale: .8;
+            opacity: 0;
+            animation: fade-in linear forwards;
+            animation-timeline: view();
+            animation-range: 100px 300px;
+            transition: 0.5s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            to {
+                scale: 1;
+                opacity: 1;
+            }
+        }
+
+        .page2 .heading {
+
+            opacity: 0;
+            animation: reveal linear forwards;
+            animation-timeline: view();
+            animation-range: 100px 500px;
+            transform: translateX(-100%);
+            transition: 0.5s ease-in-out;
+        }
+
+
+        @keyframes reveal {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .space {
+            height: 100vh;
+            background: linear-gradient(lime,rgb(3, 184, 72),rgb(0, 255, 157));
+
+            animation: change-clr linear forwards;
+            animation-timeline: view();
+            animation-range: start;
+            transition: 0.5s ease-in-out;
+            filter: hue-rotate(0deg);
+
+        }
+
+        @keyframes change-clr {
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="overflow">
+
+
+            <div class="page1">
+
+                <div class="heading">
+                    <h2 class="heading-page1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, est!
+                        Exercitationem dolor
+                        consectetur commodi natus!</h2>
+                    <!-- <img src="images/unnamed/30721.jpg" class="img-header" alt=""> -->
+                </div>
+            </div>
+        </div>
+        <section class="page2">
+            <div class="heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, eius.</div>
+            <img src="images/background-flower.jpg" class="img-section" alt="">
+            <div class="heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, eius.</div>
+            <img src="images/background-flower.jpg" class="img-section" alt="">
+            <div class="heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, eius.</div>
+            <img src="images/background-flower.jpg" class="img-section" alt="">
+            <div class="heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, eius.</div>
+            <img src="images/background-flower.jpg" class="img-section" alt="">
+        </section>
+
+        <div class="space"></div>
+
+        <div class="space"></div>
+
+    </div>
+</body>
+
+</html>

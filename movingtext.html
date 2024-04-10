@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vmax;
+            position: relative;
+            background: rgb(12, 12, 12);
+            color: white;
+
+        }
+
+        p {
+            background: red;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+
+        .moving-text {
+            padding: 10px;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        .content {
+            white-space: nowrap;
+            display: inline-block;
+            animation: animate 10s linear infinite;
+        }
+
+        .moving-text h1 {
+            text-transform: uppercase;
+            font-size: 5em;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .moving-text::-webkit-scrollbar {
+            display: none;
+        }
+
+        p {
+            display: inline-block;
+            margin: 1vw 2vw;
+        }
+
+        .moving-text h1:hover {
+            color: rgb(72, 253, 0)
+        }
+
+
+        @keyframes animate {
+            from {
+                transform: translateX(0%);
+            }
+
+            to {
+                transform: translateX(-100%);
+
+            }
+
+        }
+
+        #blur {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: -2;
+            backdrop-filter: blur(10px);
+        }
+
+        #blob {
+            z-index: -5;
+            background: white;
+            height: 20px;
+            width: 20px;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(16, 0, 54, 0.2s);
+            transition: 0.1s ease-in-out;
+            border-radius: 50%;
+            position: fixed;
+            animation: rotate 10s infinite;
+        }
+
+ 
+        @keyframes rotate {
+            from {
+                rotate: 0deg;
+            }
+
+            50% {
+                scale: 1 1.5;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+
+        }
+
+        .space {
+            width: 100%;
+            backdrop-filter: blur(10px);
+            z-index: -2;
+            top: 100%;
+            position: absolute;
+            height: 100vh;
+            background: linear-gradient(transparent, rgba(14, 14, 14, 0.068)) ;
+          
+        }
+    </style>
+</head>
+
+<body>
+    <div id="blur"></div>
+
+
+    <div id="blob"></div>
+
+
+    <div class="moving-text">
+        <div class="content">
+            <p></p>
+            <h1>Explore</h1>
+            <p></p>
+            <h1>Advanture</h1>
+            <p></p>
+            <h1>Goals</h1>
+            <p></p>
+            <h1>Design</h1>
+            <p></p>
+            <h1>Passion</h1>
+        </div>
+        <div class="content">
+            <p></p>
+            <h1>Explore</h1>
+            <p></p>
+            <h1>Advanture</h1>
+            <p></p>
+            <h1>Goals</h1>
+            <p></p>
+            <h1>Design</h1>
+            <p></p>
+            <h1>Passion</h1>
+        </div>
+        <div class="content">
+            <p></p>
+            <h1>Explore</h1>
+            <p></p>
+            <h1>Advanture</h1>
+            <p></p>
+            <h1>Goals</h1>
+            <p></p>
+            <h1>Design</h1>
+            <p></p>
+            <h1>Passion</h1>
+        </div>
+
+    </div>
+
+ 
+
+    <div class="space">
+    </div>
+
+
+
+
+    <script>
+
+        const blob = document.getElementById("blob")
+
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event
+
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+
+            }, { duration: 3000,fill:"forwards" })
+        }
+
+       
+
+
+
+
+    </script>
+</body>
+
+</html>

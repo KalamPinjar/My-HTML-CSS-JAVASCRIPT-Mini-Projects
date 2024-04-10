@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            height: 100vh;
+
+        }
+
+        .wrapper {
+            height: 100vh;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: whitesmoke;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 80px 200px 80px 80px;
+            /* background: red; */
+            border-radius: 20px;
+        }
+
+        .slider .slides {
+            position: absolute;
+            top: 50%;
+            transform: translate(80%, -50%);
+            background: var(--img);
+            background-position: center;
+            /* background-repeat: no-repeat; */
+            background-size: cover;
+            width: 240px;
+            height: 320px;
+            transition: 800ms ease;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider .slides:nth-child(0),
+        .slider .slides:nth-child(1) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(0);
+            background-size: cover;
+        }
+
+        .slider .slides:nth-child(2) {
+            left: calc(50% + 240px);
+            background-size: cover;
+        }
+
+        .slider .slides:nth-child(3) {
+            left: calc(50% + 500px);
+            background-size: cover;
+        }
+
+        .slider .slides:nth-child(4) {
+            left: calc(50% + 760px);
+            background-size: cover;
+        }
+
+        .slider .slides:nth-child(5) {
+            left: calc(50% + 1020px);
+            background-size: cover;
+            opacity: 0;
+        }
+
+        .slider .slides:nth-child(6) {
+            left: calc(50% + 1280px);
+            background-size: cover;
+            opacity: 0;
+        }
+
+        .buttons {
+            position: relative;
+            display: flex;
+            gap: 1em;
+            bottom: -90%;
+        }
+
+        .buttons span {
+            position: relative;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .buttons span::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-top: 4px solid white;
+            border-left: 4px solid white;
+            transform: rotate(135deg);
+        }
+
+        .buttons span:nth-child(1)::before {
+
+            transform: rotate(-45deg);
+            translate: 2px;
+        }
+
+        .buttons span:active {
+            opacity: 0.5;
+        }
+
+        .content {
+            position: relative;
+            top: 60%;
+            padding: 40px;
+            max-width: 600px;
+            transition: 1s ease-in-out;
+            transform: translateY(40px);
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .content h2 {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .content p {
+            color: white;
+        }
+
+        .slider .slides:nth-child(0) .content,
+        .slider .slides:nth-child(1) .content {
+            opacity: 1;
+            transform: translateY(0px);
+            transition-delay: 0.3s;
+
+        }
+
+        @media (width<900px) {
+            .slider {
+                position: absolute;
+                inset: 30px 30px 180px 30px;
+            }
+
+            .slider .slides {
+
+                top: initial;
+                transform: translate(10%, -50%);
+                width: 100px;
+                height: 100px;
+                bottom: -160px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            }
+
+            .buttons {
+                left:-10%;
+            }
+
+            .slider .slides:nth-child(0),
+            .slider .slides:nth-child(1) {
+                top: initial;
+                bottom: 0px;
+            }
+
+            .slider .slides:nth-child(2) {
+                left: 0;
+            }
+
+            .slider .slides:nth-child(3) {
+                left: 120px;
+            }
+
+            .slider .slides:nth-child(4) {
+                left: 240px;
+            }
+
+            .slider .slides:nth-child(5) {
+                left: 360px;
+            }
+
+            .slider .slides:nth-child(6) {
+                left: 500px;
+            }
+
+            .content {
+                top: 55%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="slider">
+                <div class="img slides" style="--img:url('images/walls.jpg')">
+                    <div class="content">
+                        <h2>Slide 01</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit aliquam itaque
+                            perferendis optio odit?</p>
+                    </div>
+                </div>
+
+                <div class="img slides" style="--img:url('images/space/gallexy1.jpg')">
+                    <div class="content">
+                        <h2>Slide 02</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit aliquam itaque
+                            perferendis optio odit?</p>
+                    </div>
+                </div>
+
+                <div class="img slides" style="--img:url('images/space/effect1.jpg')">
+                    <div class="content">
+                        <h2>Slide 03</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit aliquam itaque
+                            perferendis optio odit?</p>
+                    </div>
+                </div>
+
+                <div class="img slides" style="--img:url('images/dragIMG.jpg')">
+                    <div class="content">
+                        <h2>Slide 04</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit aliquam itaque
+                            perferendis optio odit?</p>
+                    </div>
+                </div>
+
+                <div class="img slides" style="--img:url('images/Retro-Smoke-and-Round-Light.png')">
+                    <div class="content">
+                        <h2>Slide 05</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit aliquam itaque
+                            perferendis optio odit?</p>
+                    </div>
+                </div>
+
+                <div class="img slides" style="--img:url('images/green-gallary/mountain1.jpg')">
+                    <div class="content">
+                        <h2>Slide 06</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit aliquam itaque
+                            perferendis optio odit?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="buttons">
+
+                <span class="prev"></span>
+                <span class="next"></span>
+
+            </div> -->
+
+
+
+        </div>
+    </div>
+
+    <script>
+        let next = document.querySelector('.next');
+        let previous = document.querySelector('.prev');
+        let slider = document.querySelector('.slider');
+
+        //with buttons
+
+        // next.addEventListener('click', function () {
+        //     let slides = document.querySelectorAll('.slides')
+        //     slider.appendChild(slides[0])
+        // })
+
+        // previous.addEventListener('click', function () {
+        //     let slides = document.querySelectorAll('.slides')
+        //     slider.prepend(slides[slides.length - 1])
+
+        // })
+
+        //without buttons
+
+        function showimg() {
+            setInterval(() => {
+                let slides = document.querySelectorAll('.slides')
+                slider.appendChild(slides[0])
+
+            }, 3000);
+        }
+
+        showimg()
+    </script>
+</body>
+
+</html>

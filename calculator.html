@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+              *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        html {
+            /* cursor: none; */
+            overflow: hidden;
+        }
+
+        body {
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+            }
+        }
+
+        .cursor {
+            &::before {
+                content: '';
+                position: absolute;
+                /* left: var(--x, 0px);
+                top: var(--y, 0px); */
+                top:50%;
+                left:50%;
+                translate: -50% -50%;
+                width: 200px;
+                aspect-ratio: 1;
+                background: white;
+                border-radius: 100vw;
+                filter: blur(200rem);
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background:radial-gradient(lime, transparent 30%), conic-gradient(
+                        red,
+                        blue,
+                        green,
+                        yellow,
+                        purple,
+                        magenta,
+                        cyan,
+                        yellow,
+                        orangered,
+                        red);
+                mix-blend-mode:color-dodge;
+                animation: rotateHue 10s linear infinite;
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes rotateHue {
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            height: 100vh;
+            background: black;
+        }
+
+        .container {
+            position: relative;
+            width: 60%;
+            height: 60vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: grid;
+            place-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.493);
+            box-shadow: inset 1px 1px 5px rgb(20, 20, 20);
+            z-index: 99;
+            padding: 1.5rem;
+            border: 0.25rem white solid;
+            border-radius: 5px;
+        }
+
+
+        .container .operations {
+            display: grid;
+            gap: 10px;
+            position: absolute;
+            left: 10%;
+            top: calc(7rem + 1px);
+
+        }
+
+        .numbers {
+            display: grid;
+
+            grid-template-areas:
+                "1 2 3";
+            gap: 10px;
+            position: relative;
+            left: 12%;
+            top: -15%;
+        }
+
+        /* .numbers button:nth-last-child(2) {
+            position: relative;
+            left: 120%;
+        }
+
+        .numbers button:nth-last-child(1) {
+            position: relative;
+            left: 120%;
+        } */
+
+        button {
+            font-size: 0.95rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: black;
+            height: 2rem;
+            width: 3rem;
+            border: 0.15rem rgb(255, 255, 255) solid;
+            border-radius: 5px;
+            box-shadow:inset 5px 5px 10px ;
+            overflow: hidden;
+        }
+
+        input {
+            font-size: 1.6rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: black;
+            padding: 1.2rem;
+            height: 3rem;
+            width: 15rem;
+            border: 0.15rem white solid;
+            border-radius: 5px;
+            text-align: right;
+            box-shadow: 2.5px 2.5px 10px inset rgb(0, 0, 0);
+
+        }
+
+        button:hover {
+          
+            box-shadow:2px 2px 2px 2px black;
+        }
+        button:focus {
+          
+            box-shadow:2px 2px 2px 2px black;
+        }
+
+        /* input:hover {
+        } */
+
+        @media (width > 500px) {
+            .container {
+                padding-top: 40px;
+                position: relative;
+                height: 60vh;
+                width: fit-content;
+            }
+
+            .container .operations {
+                position: relative;
+                left: -40%;
+                top: 0;
+            }
+
+            .numbers {
+                top: calc(-125% - 1px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <input value="0" type="text" id="data">
+
+
+        <div class="operations">
+
+            <button id="clear" value="clear">CE</button>
+            <button value="+" id="add">+</button>
+            <button value="-" id="sub">-</button>
+            <button value="*" id="multi">*</button>
+            <button value="/" id="div">/</button>
+
+        </div>
+
+        <div class="numbers">
+            <button value="1" id="one">1</button>
+            <button value="2" id="two">2</button>
+            <button value="3" id="three">3</button>
+            <button value="4" id="four">4</button>
+            <button value="5" id="five">5</button>
+            <button value="6" id="six">6</button>
+            <button value="7" id="seven">7</button>
+            <button value="8" id="eight">8</button>
+            <button value="9" id="nine">9</button>
+
+            <button id="del">_O_</button>
+            <button value="0" id="zero">0</button>
+
+            <button id="equals" value="input">=</button>
+        </div>
+    </div>
+
+
+    <div class="cursor"></div>
+    <script>  
+    // const cursor = document.querySelector(".cursor")
+    //     document.addEventListener('mousemove', (e) => {
+    //         let x = e.offsetX;
+    //         let y = e.offsetY;
+
+    //         cursor.style.setProperty("--x", x + "px")
+    //         cursor.style.setProperty("--y", y + "px")
+    //     })
+        let clear = document.getElementById("clear"),
+            equals = document.getElementById("equals"),
+            numbers = document.querySelectorAll("numbers"),
+            operations = document.querySelectorAll("operations"),
+            input = document.getElementById("data"),
+            // deleteInput = document.getElementById("del"),
+            allnum = document.getElementsByClassName("n"),
+            add = document.getElementById("add"),
+            subtract = document.getElementById("sub"),
+            multiply = document.getElementById("multi"),
+            divide = document.getElementById("div"),
+            one = document.getElementById("one"),
+            two = document.getElementById("two"),
+            three = document.getElementById("three"),
+            four = document.getElementById("four"),
+            five = document.getElementById("five"),
+            six = document.getElementById("six"),
+            seven = document.getElementById("seven"),
+            eight = document.getElementById("eight"),
+            nine = document.getElementById("nine"),
+            zero = document.getElementById("zero")
+
+
+        let inputv = input.value
+
+        console.log(inputv)
+
+        input.addEventListener("keyup", (e) => {
+
+            e = input.value;
+            inputv = e
+
+        })
+
+        // deleteInput.addEventListener('click', function Click() {
+        //     if (inputv > 0) {
+        //         inputv--
+        //         input.value = inputv
+        //     }
+        // })
+
+        clear.addEventListener('click', function Click() {
+            input.value = 0
+        })
+
+        one.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 1
+                input.value = inputv
+            }
+            else {
+                inputv = 1
+                input.value += inputv
+            }
+        })
+        two.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 2
+                input.value = inputv
+            }
+            else {
+                inputv = 2
+                input.value += inputv
+            }
+        })
+        three.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 3
+                input.value = inputv
+            }
+            else {
+                inputv = 3
+                input.value += inputv
+            }
+        })
+        four.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 4
+                input.value = inputv
+            }
+            else {
+                inputv = 4
+                input.value += inputv
+            }
+        })
+        five.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 5
+                input.value = inputv
+            }
+            else {
+                inputv = 5
+                input.value += inputv
+            }
+        })
+        six.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 6
+                input.value = inputv
+            }
+            else {
+                inputv = 6
+                input.value += inputv
+            }
+        })
+        seven.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 7
+                input.value = inputv
+            }
+            else {
+                inputv = 7
+                input.value += inputv
+            }
+        })
+        eight.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 8
+                input.value = inputv
+            }
+            else {
+                inputv = 8
+                input.value += inputv
+            }
+        })
+        nine.addEventListener('click', function Click() {
+            if (input.value == 0) {
+                inputv = 9
+                input.value = inputv
+            }
+            else {
+                inputv = 9
+                input.value += inputv
+            }
+        })
+        zero.addEventListener('click', function Click() {
+            if (input.value == 0) {
+
+                inputv = 0
+                input.value = inputv
+            }
+            else {
+                inputv = 0
+                input.value += inputv
+            }
+
+        })
+
+        add.addEventListener('click', function Click() {
+            if (input.value == 0) {
+
+                inputv = 0
+                input.value = inputv
+            }
+            else {
+                inputv = `+`
+                input.value += inputv
+            }
+            
+
+        })
+        subtract.addEventListener('click', function Click() {
+            if (input.value == 0) {
+
+                inputv = 0
+                input.value = inputv
+            }
+            else if(input.value =='+'){
+                inputv= '-'
+                input.value = inputv
+            }
+            else{
+                inputv = '-'
+                input.value+=inputv
+            }
+
+            a = input.value.split("-")
+            console.log(a)
+        })
+        multiply.addEventListener('click', function Click() {
+            if (input.value == 0) {
+
+                inputv = 0
+                input.value = inputv
+            }
+            else {
+                inputv = `*`
+                input.value += inputv
+            }
+
+            a = input.value.split("*")
+            console.log(a)
+        })
+        divide.addEventListener('click', function Click() {
+            if (input.value == 0) {
+
+                inputv = 0
+                input.value = inputv
+            }
+            else {
+                inputv = `/`
+                input.value += inputv
+            }
+
+            a = input.value.split("/")
+            console.log(a)
+        })
+
+    </script>
+</body>
+
+</html>

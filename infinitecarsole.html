@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+
+        }
+
+        /* body{
+            height: 100vh;
+        } */
+
+        nav {
+            position: sticky;
+            top: 0;
+            height: 5%;
+            background: hsla(0, 0%, 67%, 0.575);
+            backdrop-filter: blur(10px);
+            z-index: 9;
+
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0.65rem;
+            gap: 1rem;
+            list-style-type: none;
+
+        }
+
+        nav ul li:hover {
+            color: hsl(260, 80%, 52%);
+            cursor: pointer;
+
+        }
+
+        nav ul li:first-child {
+            margin-right: auto;
+            color: black;
+
+        }
+
+        /* Main */
+        .wrapper {
+            position: relative;
+            height: 100svh;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            background: hsla(0, 0%, 49%, 0.575);
+        }
+
+        .wrapper .container {
+            display: grid;
+            width: 100%;
+            aspect-ratio: 1
+        }
+
+        .wrapper .container .carsole-content {
+            display: flex;
+            gap: 5px;
+            height: 90vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper .container .carsole-content .carsole-cards {
+            display: flex;
+            height: 100%;
+            background: url(images/green-gallary/black-green-texture.jpg);
+            width: 100%;
+            flex-direction: column;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        .wrapper .container .carsole-content .carsole-cards .cards {
+            position: relative;
+            display: grid;
+            height: 100%;
+            border-top: 1px greenyellow solid;
+            border-radius: 5px 0;
+            place-items: center;
+            backdrop-filter: blur(5px);
+            /* opacity: 0; */
+            margin-bottom: 5%;
+            background: rgba(51, 51, 51, 0.5);
+        }
+
+        .wrapper .container .carsole-content #carsole2 {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            background: url(images/green-gallary/black-green-texture.jpg);
+            flex-direction: column;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        .wrapper .container .carsole-content #carsole2 .cards {
+            position: relative;
+            display: grid;
+            height: 100%;
+            place-items: center;
+            /* opacity: 0; */
+            margin-bottom: 5%;
+            border-top: 1px greenyellow solid;
+            border-radius: 5px 0;
+            backdrop-filter: blur(5px);
+            background: rgba(51, 51, 51, 0.5);
+        }
+
+
+        @media screen and (width>700px) {
+
+
+            .wrapper {
+
+                height: 100svh;
+
+            }
+
+            .wrapper .container {
+                display: grid;
+                /* border: 1px rgb(0, 255, 21) solid; */
+                place-items: flex-end;
+                width: 100%;
+                height: 100vh;
+            }
+
+            .wrapper .container .carsole-content {
+                height: 90vh;
+                width: 50%;
+                border: 1px rgb(0, 255, 21) solid;
+                position: relative;
+                top: -1%;
+            }
+
+
+            .wrapper .container .carsole-content .carsole-cards .cards {
+
+                padding: 3rem;
+            }
+
+            .wrapper .container .carsole-content #carsole2 .cards {
+
+                padding: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="nav-lists">
+            <li class="list">Logo</li>
+            <li class="list">Sign Up</li>
+            <li class="list">Log In</li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="wrapper">
+            <div class="container">
+                <div class="carsole-content">
+                    <div id="carsole2">
+                        <div class="cards">01</div>
+                        <div class="cards">02</div>
+                        <div class="cards">03</div>
+                        <div class="cards">04</div>
+                        <div class="cards">05</div>
+                        <div class="cards">06</div>
+                    </div>
+                    <div class="carsole-cards">
+                        <div class="cards">01</div>
+                        <div class="cards">02</div>
+                        <div class="cards">03</div>
+                        <div class="cards">04</div>
+                        <div class="cards">05</div>
+                        <div class="cards">06</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="D:\Kalam\Programming Languages\html\gsap\gsap-public\minified\gsap.min.js"></script>
+
+
+
+    <script>
+        let tl = gsap.timeline({
+            repeat: -1
+        });
+
+        tl.to(".carsole-cards .cards", {
+            ease: "linear",
+            y: "-800%",
+            duration: 8,
+            repeat: -1,
+            yoyo: true
+
+        }, 'a').to("#carsole2 .cards", {
+            ease: "linear",
+            y: "700%",
+            duration: 8,
+            repeat: -1,
+            yoyo: true
+        }, 'a')
+
+        // tl.from(".carsole-cards .cards", {
+        //     ease: "linear",
+        //     y: "700%",
+        //     duration: 10,
+
+        // }, 'b').to(".carsole-cards .cards", {
+        //     ease: "linear",
+        //     y: "-700%",
+        //     duration: 10,
+
+        // }, 'b').from("#carsole2 .cards", {
+        //     ease: "linear",
+        //     y: "-700%",
+        //     duration: 20,
+
+        // }, 'b').to("#carsole2 .cards", {
+        //     ease: "linear",
+        //     y: "700%",
+        //     duration: 10,
+
+        // }, 'b')
+
+    </script>
+
+</body>
+
+</html>

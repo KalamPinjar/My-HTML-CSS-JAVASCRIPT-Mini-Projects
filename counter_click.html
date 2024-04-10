@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: rgba(27, 213, 238, 0.548);
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            min-width: fit-content;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .container .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            font-size: 1.1rem;
+            font-weight: 600;
+            height: 10vh;
+            width: 20vh;
+            border-radius: 10vh;
+            background-color: rgb(28, 87, 214);
+
+        }
+
+        input {
+            border: 1px solid black;
+            font-size: 4rem;
+            height: 20vh;
+            width: 40vh;
+            text-align: center;
+            border-radius: 20px;
+            background: radial-gradient(cyan, transparent 100%),
+                conic-gradient(blue, cyan, blue, cyan, blue, cyan, blue, cyan, blue);
+
+        }
+
+        button:hover {
+            color: white;
+            background-color: rgb(34, 47, 241);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <input type="number" value="0" id="input">
+
+        <div class="button">
+
+            <button id="Decrease" ">Decrease</button>
+            <button id="Reset" ">Reset</button>
+            <button id="Increase" ">Increase</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        let text1 = document.getElementById("input"),
+            btn1 = document.getElementById("Decrease"),
+            btn2 = document.getElementById("Reset"),
+            btn3 = document.getElementById("Increase"),
+            count = 0;
+
+        textv=text1.value
+        btn1.addEventListener("click", function Click(){
+            textv = count--;
+            text1.value=textv
+        })
+
+        btn2.addEventListener("click", function Click(){
+            textv = count=0;
+            text1.value=textv
+        })
+
+        btn3.addEventListener("click", function Click(){
+            textv = count++;
+            text1.value=textv
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

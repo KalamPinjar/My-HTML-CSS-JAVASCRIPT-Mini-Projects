@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            background: black;
+        }
+
+        nav {
+            position: relative;
+            display: flex;
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            position: relative;
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            padding: 15px 25px;
+            letter-spacing: 0.1em;
+        }
+
+        a:nth-child(1) {
+            margin-right: auto;
+        }
+
+        a:nth-child(7) {
+            margin-left: auto;
+        }
+
+        #marker {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(0deg, #0afff346, transparent);
+            height: 100%;
+            width: 90px;
+            border-bottom: 5px solid cyan;
+            transition: 0.5s;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 25px #0afff346);
+        }
+
+        /* @media (max-width:700px) {
+            nav {
+                height: 100vh;
+                width: 100%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                padding: 10px 0;
+                background: rgba(255, 255, 255, 0.1);
+                left: -90%;
+            }
+
+            nav a {
+                position: relative;
+                text-decoration: none;
+                color: white;
+                font-weight: 400;
+                padding: 15px 25px;
+                letter-spacing: 0.1em;
+            }
+
+            a:nth-child(7) {
+                margin-left: 0;
+
+            }
+            nav:hover{
+                left:0%
+            }
+
+        } */
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#">Logo</a>
+        <a href="#">Home</a>
+        <a href="#">Team</a>
+        <a href="#">Contact</a>
+        <a href="#">Signup</a>
+        <a href="#">LOGIN</a>
+        <a href="#">PROFILE</a>
+        <div id="marker"></div>
+    </nav>
+
+    <script>
+        let marker = document.querySelector("#marker")
+        let item = document.querySelectorAll("nav a")
+
+        function indicator(e) {
+            marker.style.left = e.offsetLeft + 'px';
+            marker.style.width = e.offsetWidth + 'px';
+        }
+
+        item.forEach(link => {
+            link.addEventListener('click', (e) => {
+                indicator(e.target);
+            })
+        })
+    </script>
+
+</body>
+
+</html>

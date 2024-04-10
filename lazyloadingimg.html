@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+        .wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .bg {
+            background: url(images/green-gallary/drops-green.jpg) no-repeat center center/cover;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: calc(50vw - 60px);
+            /* height: calc(50vh - 60px); */
+            aspect-ratio: 12/9;
+            z-index: -1;
+            filter: blur(0);
+
+        }
+
+        /* .loading-text {
+            font-size: 2rem;
+            color: black;
+        } */
+
+        .space {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            color: white;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <section class="bg"></section>
+        <!-- <div class="loading-text">0%</div> -->
+
+    </div>
+    <div class="space">
+        <h1>heeee</h1>
+    </div>
+
+    
+    <script>
+
+        //let loadText = document.querySelector(".loading-text");
+        let bg = document.querySelector(".bg");
+
+        let load = 0;
+        let int = setInterval(blurring, 30);
+
+        function blurring() {
+            load++;
+            if (load > 99) {
+                clearInterval(int);
+            }
+
+            //loadText.innerText = `${load}%`;
+            //loadText.style.opacity = scale(load, 0, 100, 1, 0);
+            bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`;
+        }
+
+        const scale = (num, in_min, in_max, out_min, out_max) => {
+            return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+        };
+    </script>
+</body>
+
+</html>
