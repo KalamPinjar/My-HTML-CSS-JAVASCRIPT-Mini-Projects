@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="shortcut icon" type="img/png" href="img/turn.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            background: url(images/bg.jpg);
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .banner .clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .banner .clouds img {
+            position: absolute;
+            bottom: 0;
+            max-width: 100%;
+            animation: animate calc(8s *var(--i)) linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+
+        }
+
+        section {
+            position: relative;
+            padding: 75px 100px;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="clouds">
+            <img src="images/cloud1.png" style="--i:1;">
+            <img src="images/cloud2.png" style="--i:2;">
+            <img src="images/cloud3.png" style="--i:3;">
+            <img src="images/cloud4.png" style="--i:4;">
+            <img src="images/cloud5.png" style="--i:5;">
+        </div>
+    </div>
+    <section>
+        <h2>CSS Animation Clouds</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae enim molestiae aliquid possimus velit
+            error sequi pariatur quod quam tempora officia, aspernatur, et odio. Nulla at dolorem exercitationem et
+            iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odit aut dolorem ex odio sint,
+            eligendi nihil natus aspernatur alias sapiente porro quae facere voluptate vel consequuntur eos dicta
+            perferendis! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur eveniet enim dolor sit
+            fuga architecto! Eaque, animi laboriosam reprehenderit iste, quis eum delectus pariatur obcaecati odio
+            alias dignissimos atque? Quas.
+
+
+    </section>
+
+
+
+</body>
+
+</html>

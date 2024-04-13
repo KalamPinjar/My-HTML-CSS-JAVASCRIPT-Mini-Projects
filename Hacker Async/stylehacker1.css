@@ -1,0 +1,225 @@
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+/*hackers.html*/
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    height: 100svh;
+    color: rgb(123, 250, 19);
+    background: black;
+    place-items: center;
+    overflow: hidden;
+}
+
+
+.side-container {
+    position: absolute;
+    height: 50vh;
+    width: 100%;
+    /* border: 10px dotted red; */
+    display: flex;
+    flex-shrink: auto;
+    z-index: -10;
+    /* overflow: hidden; */
+    opacity: 0.1;
+
+    word-break: break-all;
+}
+
+
+.div-side {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    word-break: break-all;
+    filter: blur(0.5px);
+    /* border: 2px dotted red; */
+}
+
+.main-div {
+    position: relative;
+    width: 96dvw;
+    height: 80%;
+    padding: 30px 0 10px 20px;
+    /* border: 2px solid red; */
+    overflow: hidden;
+}
+
+#text-div {
+    display: flex;
+    position: relative;
+    flex-direction: column-reverse;
+    justify-items: end;
+    font-family: monospace;
+    white-space: pre-line;
+    width: 60dvw;
+    line-height: 30px;
+    padding: 1rem;
+    /* border: 2px dotted red; */
+    overflow-y: auto;
+    word-break: keep-all;
+    white-space: nowarp;
+    text-shadow:
+        0 0 10px rgb(123, 250, 19);
+
+}
+
+.access-div{
+    top:50%;
+    left:50%;
+    position:absolute;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+#access {
+    color: rgb(140, 255, 46);
+    text-decoration: underline;
+    visibility: hidden;
+    text-shadow:
+        0 0 10px rgb(123, 250, 19);
+
+    animation: animate 700ms ease-in-out;
+
+}
+
+
+@keyframes animate {
+    0%{
+        opacity: 0;
+        scale:0;
+    }
+
+    50%{
+        opacity: 1;
+        scale:1.1;
+    }
+    
+   90%,100%{
+        opacity: 1;
+        scale:1;
+    }
+}
+
+
+
+
+.blinking-cursor {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    height: 20px;
+    width: 5px;
+    background-color: #fff;
+    /* Change color as needed */
+    animation: blink 1s infinite;
+    /* Blinking animation */
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+
+h1 {
+    padding: 0rem clamp(1rem, 2vw, 3rem);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-size: clamp(1rem, 5vw, 5rem);
+    color: white;
+    margin: 0rem;
+    white-space: nowrap;
+    z-index: 3;
+    border-radius: clamp(0.4rem, 0.75rem, 0.75vw, 1rem);
+
+}
+
+@media (max-width: 786px) {
+
+    .main-div {
+        position: relative;
+        width: 97dvw;
+        height: 80%;
+        /* border: 2px solid red; */
+        overflow: hidden;
+    }
+
+    #text-div {
+        display: flex;
+        position: relative;
+        flex-direction: column-reverse;
+        justify-items: end;
+        font-family: monospace;
+        white-space: pre-line;
+        width: 90dvw;
+        line-height: 30px;
+        /* border: 2px dotted red; */
+        overflow-y: auto;
+        word-break: keep-all;
+        white-space: nowarp;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        flex-wrap: wrap;
+        /* height: 120vh; */
+        max-width: 1200px;
+        /* width: 120vh; */
+        /* margin: 10px; */
+        /* padding: 1em; */
+        /* background: linear-gradient(aqua, purple); */
+
+    }
+}
+
+/* 
+@media (min-width:  900px) {
+    .side-container{
+        position: relative;
+        
+    }
+    .div-side {
+    
+        top:-2.3em;
+        position: absolute;
+        left:37em;
+        width: 30svw;
+        height: calc(65dvh + 1em);
+        left: calc(65% + 1em);
+        padding: 1rem;
+        border: 2px dotted red;
+    }
+}
+     */
