@@ -16,6 +16,9 @@ Welcome to my GitHub repository containing over 70 mini projects built using HTM
 4. Experiment and modify the code to customize the projects to your liking.
 5. Have fun learning and building!
 
+### Note -
+If SomeThing Doesnt Work or Display Properly That Means You Need To Insert Images By YourSelf As I Have Not Provided With All Of The Images Used In This Project.
+
 ### Contribution
 
 If you find any issues or have ideas for improvements, feel free to open an issue or submit a pull request. Contributions are welcome!
