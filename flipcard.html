@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        html {
+            cursor: none;
+            overflow: hidden;
+        }
+
+        body {
+            background: black;
+            position: relative;
+            height: 100vh;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+            }
+        }
+
+
+
+        .container {
+            /* background: black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            flex-direction: column;
+
+        }
+
+        .flip {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 0.25rem;
+            perspective: 3200px;
+        }
+
+        .cards {
+            position: absolute;
+            font-size: 2rem;
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+            flex-wrap: wrap;
+            height: 250px;
+            width: 400px;
+            background: rgba(3, 3, 3, 0.534);
+            color: black;
+            box-shadow: 4px 12px 4px rgba(0, 0, 0, 0.09);
+            transition: 1s ease-in-out;
+            backface-visibility: hidden;
+        }
+
+        .c1 {
+            transform: rotateX(0deg);
+            background: rgba(245, 245, 245, 0.842);
+
+        }
+
+        .c2 {
+            transform: rotateX(-180deg);
+            background: rgba(100, 100, 100, 0.623);
+
+        }
+
+        .flip:hover .c1 {
+            transform: rotateX(180deg);
+        }
+
+        .flip:hover .c2 {
+            transform: rotateX(0deg);
+        }
+
+        #blob {
+            height: 5vmax;
+            aspect-ratio: 1;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+
+            position: absolute;
+            translate: (-50%, -50%);
+            background: white;
+            mix-blend-mode: difference;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="flip">
+
+            <div class="c1 cards">Front</div>
+            <div class="c2 cards">Back</div>
+        </div>
+
+    </div>
+
+
+    <div id="blob"></div>
+    <script>
+
+
+        const blob = document.getElementById("blob")
+
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event
+
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+
+            }, { duration: 3000, fill: "forwards" })
+        }
+
+    </script>
+</body>
+
+</html>

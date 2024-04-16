@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --blue: rgb(0, 225, 255);
+            --red: rgb(211, 0, 0);
+        }
+
+        *,
+        *::before,
+        *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppines", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: black;
+        }
+
+        .bg {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+
+        }
+
+        .bubbles {
+            position: relative;
+            display: flex;
+
+
+        }
+
+        .bubbles span {
+            position: relative;
+            min-width: 30px;
+            height: 30px;
+            background: var(--blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--blue),
+                0 0 50px var(--blue),
+                0 0 100px var(--blue);
+            margin: 0 4px;
+            animation: animate 15s linear infinite;
+            animation-duration: calc(75s/var(--i));
+        }
+
+        .bubbles span:nth-child(even) {
+            background: var(--red);
+
+            box-shadow: 0 0 10px var(--red),
+                0 0 50px var(--red),
+                0 0 100px var(--red);
+
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(100vh) scale(0);
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+            }
+
+        }
+
+        nav {
+            align-items: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 2;
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            position: relative;
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            padding: 25px;
+            letter-spacing: 0.1em;
+        }
+
+        a:nth-child(1) {
+            margin-right: auto;
+
+        }
+
+        a:nth-child(7) {
+            margin-left: auto;
+        }
+
+        #marker {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(0deg, #0afff346, transparent);
+            height: 100%;
+            width: 90px;
+            border-bottom: 5px solid cyan;
+            transition: 0.5s;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 25px #0afff346);
+        }
+
+        section {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        section .content {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            max-width: 800px;
+        }
+
+        section .content h2 {
+            font-size: 3.5em;
+            color: #fff;
+        }
+
+        section .content h2 span {
+            color: red;
+        }
+
+        section .content p {
+            color: #fff;
+            font-size: 1.2em;
+
+        }
+
+        section .content .buttons {
+            position: relative;
+            top: 10px;
+            display: flex;
+            gap: 25px;
+
+        }
+
+        section .content .buttons a {
+            display: inline-block;
+            padding: 11px 30px;
+            background: var(--blue);
+            color: black;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 6px;
+            letter-spacing: 0.1em;
+
+        }
+
+        section .content .buttons a:nth-child(1) {
+            background: transparent;
+            color: #fff;
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+
+        section .content .buttons a:nth-child(1):hover {
+            background: var(--blue);
+            border: 2px solid var(--blue);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="bg">
+        <div class="bubbles">
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+        </div>
+        <header>
+            <nav>
+                <a href="#"></a>
+                <a href="#">Home</a>
+                <a href="#">Team</a>
+                <a href="#">Contact</a>
+                <a href="#">Signup</a>
+                <a href="#">LOGIN</a>
+                <a href="#">PROFILE</a>
+                <div id="marker"></div>
+            </nav>
+        </header>
+
+        <section>
+            <div class="content">
+                <h2><span>CSS </span>Animatio Website</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab in sequi nam, temporibus labore
+                    architecto dolore ipsa aut illo velit vitae officia nostrum dolor nulla perferendis quos possimus
+                    accusantium laboriosam!</p>
+                <div class="buttons">
+                    <a href="#">Explore</a>
+                    <a href="#">Join Us</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        let marker = document.querySelector("#marker")
+        let item = document.querySelectorAll("nav a")
+
+        function indicator(e) {
+            marker.style.left = e.offsetLeft + 'px';
+            marker.style.width = e.offsetWidth + 'px';
+        }
+
+        item.forEach(link => {
+            link.addEventListener('click', (e) => {
+                indicator(e.target);
+            })
+        })
+    </script>
+</body>
+
+</html>

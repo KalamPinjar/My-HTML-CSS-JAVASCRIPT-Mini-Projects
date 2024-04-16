@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-clr: white;
+            --primary-label: rgb(44, 223, 44);
+            --secondary-label: white;
+            --white-ball: white;
+            --black-ball: black;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--primary-clr);
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            border-radius: 5px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            width: 600px;
+        }
+
+        .title {
+            margin-bottom: 20px;
+
+        }
+
+        .header {
+            background: #000;
+            color: white;
+            padding: 30px 20px;
+        }
+
+        .header input {
+            border: 0;
+            border-radius: 50px;
+            font-size: 14px;
+            padding: 10px 15px;
+            width: 100%;
+            outline: none;
+
+        }
+
+        .user-list {
+            background: white;
+            list-style: none;
+            padding: 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* Javascript */
+        .user-list li {
+            display: flex;
+            padding: 20px;
+        }
+
+        .user-list img {
+
+            border-radius: 50%;
+            object-fit: cover;
+            height: 60px;
+            width: 60px;
+            margin-right: 20px;
+
+        }
+
+        .user-list .user-info h4 {
+            margin: 0 0 10px;
+        }
+
+        .user-list .user-info p {
+            font-size: 12px;
+        }
+
+        .user-list li:not(:last-of-type) {
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-list li.hide {
+            display: none;
+        }
+
+        .toggle-container {
+            position: absolute;
+            bottom: 1rem;
+            right: 4rem;
+        }
+
+        #switch {
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        label {
+            display: block;
+            width: 100px;
+            height: 50px;
+            background: var(--primary-label);
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        label::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border-radius: 70px;
+            background: var(--white-ball);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            transition: 0.5s;
+        }
+
+        #switch:checked+label:after {
+            background: var(--black-ball);
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+        }
+
+        #switch:checked+label {
+            /* background: rgb(44, 223, 44); */
+            background: var(--secondary-label);
+        }
+
+        label:active:after {
+            width: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h4 class="title">Search by name and/or location</h4>
+            <input type="text" name="filter" id="filter" placeholder="Search..." />
+
+        </header>
+
+        <ul id="result" class="user-list">
+            <li>
+                <h3>Loading...</h3>
+            </li>
+        </ul>
+
+        <div class="toggler-container">
+            <input type="checkbox" name="switch" id="switch">
+            <label for="switch"></label>
+        </div>
+    </div>
+
+
+
+    <script>
+        const result = document.getElementById("result"),
+            filter = document.getElementById("filter"),
+            listItem = [];
+
+        getData();
+
+        filter.addEventListener("input", e => filterData(e.target.value))
+
+        async function getData() {
+            const res = await fetch("https://randomuser.me/api?results=50")
+            const { results } = await res.json();
+            console.log(results)
+            result.innerHTML = ''
+
+            results.forEach((user) => {
+                const li = document.createElement("li")
+                listItem.push(li)
+
+                li.innerHTML = `
+                <img src="${user.picture.large}" alt="${user.name.first}"/>
+                <div class="user-info">
+                    <h4>${user.name.first} ${user.name.last}</h4>
+                    <p>${user.location.city}, ${user.location.country}</p>
+                </div>  
+                `;
+                result.appendChild(li);
+            })
+        }
+
+        function filterData(searchTerm) {
+            listItem.forEach((item) => {
+                if (item.innerText.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    item.classList.remove("hide")
+                } else {
+                    item.classList.add("hide")
+                }
+            })
+        }
+
+        let toggler = document.getElementById("switch")
+        toggler.addEventListener("click", () => {
+            // console.log(toggler.checked)
+            if (toggler.checked === true) {
+                document.body.style.backgroundColor = "rgb(17,17,17)"
+                document.querySelector(".header").style.backgroundColor = "rgb(44, 223, 44)"
+            }
+            else {
+                document.body.style.backgroundColor = "white"
+                document.querySelector(".header").style.backgroundColor = "black"
+            }
+        })
+    </script>
+</body>
+
+</html>
