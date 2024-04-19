@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(rgb(248, 248, 99), rgb(247, 186, 72));
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar-wrapper {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 30rem;
+            height: 30rem;
+            background: #fd7272;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transform: scale(0) rotate(-180deg);
+            transition: transform 0.5s ;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.23)
+        }
+
+        .change .navbar {
+            transform: scale(1) rotate(0);
+            transition: all 1s;
+        }
+
+        .navbar-link {
+            position: absolute;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .navbar-link:hover p {
+            color: #222;
+            text-decoration: 3px underline;
+
+        }
+
+        .navbar-link:nth-child(1) {
+            top: 2rem;
+
+        }
+
+        .navbar-link:nth-child(2) {
+            top: 8rem;
+            right: 2rem;
+
+        }
+
+        .navbar-link:nth-child(3) {
+            top: 8rem;
+            left: 2rem;
+
+        }
+
+        .navbar-link:nth-child(4) {
+            bottom: 2rem;
+
+        }
+
+        .navbar-link:nth-child(5) {
+            bottom: 8rem;
+            left: 2rem;
+
+        }
+
+        .navbar-link:nth-child(6) {
+            bottom: 8rem;
+            right: 2rem;
+
+        }
+
+        .navbar-btn {
+            position: absolute;
+            width: 5rem;
+            height: 5rem;
+            background: #4a69bd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.23);
+        }
+
+        .bavbar-btn p{
+            font-size: 5rem;
+            color: white;
+            transition: all 0.5s;
+        }
+
+        .change .navbar-btn p {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar-wrapper">
+        <div class="navbar">
+            <a href="" class="navbar-link">
+                <p class="home">home</p>
+            </a>
+            <a href="" class="navbar-link">
+                <p class="products">products</p>
+            </a>
+            <a href="" class="navbar-link">
+                <p class="marketplace">marketplace</p>
+            </a>
+            <a href="" class="navbar-link">
+                <p class="about">about</p>
+            </a>
+            <a href="" class="navbar-link">
+                <p class="signup">signup</p>
+            </a>
+            <a href="" class="navbar-link">
+                <p class="login">login</p>
+            </a>
+        </div>
+        <div class="navbar-btn">
+            <p class="plus">+</p>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        document.querySelector('.navbar-btn').addEventListener('click', () => {
+            document.querySelector('.navbar-wrapper').classList.toggle("change");
+        })
+
+    </script>
+</body>
+
+</html>

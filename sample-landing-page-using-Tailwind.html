@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            cursor: crosshair;
+            /* cursor: none; */
+        }
+
+        body {
+            height: 100vh;
+            background: rgb(1, 0, 8);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        #heading {
+            margin-top: 5%;
+            margin-bottom: 0.5%;
+            letter-spacing: 0.5px;
+        }
+
+        main {
+            margin-bottom: 5%;
+        }
+
+
+        .video {
+            opacity: 0.9;
+            width: 100%;
+            aspect-ratio: 20/9;
+            border-radius: 20px;
+            border: 1px solid white;
+        }
+
+        .main-text {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-text .text-video {
+            word-spacing: 5px;
+            letter-spacing: 2px;
+            margin-top: 5%;
+            position: absolute;
+            font-size: 2.25rem;
+            z-index: 1;
+            /* color: transparent; */
+            /* mix-blend-mode:darken; */
+            /* mix-blend-mode:overlay; */
+            font-weight: 800;
+            /* animation: animate 7s forwards; */
+            font-style: italic;
+            opacity: 0.8;
+            padding: 10px;
+            border-radius: 10px;
+            text-shadow: 1px 1px 10px white;
+        }
+
+        .text-video:nth-child(1) {
+            top: 10%;
+        }
+
+        .video-img {
+            position: absolute;
+            /* width: 40%;
+            aspect-ratio: 12/6; */
+
+            width: 80%;
+            aspect-ratio: 12/8;
+            top: 5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+        }
+
+        @keyframes animate {
+
+            to {
+
+                mix-blend-mode: soft-light;
+            }
+
+        }
+
+        .main-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .circle {
+            --circle-size: 50px;
+            position: fixed;
+            height: var(--circle-size);
+            width: var(--circle-size);
+            border: 1.5px solid white;
+            border-radius: 50%;
+            top: calc(var(--circle-size) / 2 * -1);
+            left: calc(var(--circle-size) / 2 * -1);
+            pointer-events: none;
+            transition: all ease-in-out;
+            overflow: hidden;
+            background: rgb(255, 255, 255);
+            mix-blend-mode: difference;
+            z-index: 999;
+        }
+
+        .main-container .main-content {
+            margin-top: 5%;
+            height: 100vh;
+        }
+
+
+
+        .para {
+            background: red;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+
+        .moving-text {
+            padding: 10px;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        .moving-text-content {
+            white-space: nowrap;
+            display: inline-block;
+            animation: animate 10s linear infinite;
+        }
+
+        .moving-text .text-head {
+            text-transform: uppercase;
+            font-size: 5em;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .moving-text::-webkit-scrollbar {
+            display: none;
+        }
+
+        .para {
+            display: inline-block;
+            margin: 1vw 2vw;
+        }
+
+        .moving-text .text-head:hover {
+            color: rgb(72, 253, 0)
+        }
+
+
+        @keyframes animate {
+            from {
+                transform: translateX(0%);
+            }
+
+            to {
+                transform: translateX(-100%);
+
+            }
+
+        }
+
+
+
+        @keyframes rotate {
+            from {
+                rotate: 0deg;
+            }
+
+            50% {
+                scale: 1 1.5;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+
+        }
+
+        .about-product {
+            margin-top: 10%;
+            min-height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .about-product .style1 {
+            padding: 10px;
+            margin-top: 5%;
+            height: 50vh;
+            display: flex;
+            gap: 3%;
+            flex: 1;
+
+        }
+
+        .about-product .style2 {
+            height: 50vh;
+            display: flex;
+            gap: 3%;
+            flex: 1;
+            padding: 10px;
+        }
+
+        .about-product .img-product {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            background: rgba(44, 44, 44, 0.527);
+        }
+
+        .about-product .style-head h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5%;
+        }
+
+        .about-product .style-head p {
+            font-size: 1.5ch;
+        }
+
+
+        .center {
+            align-items: center;
+            background: #141414;
+        }
+
+        .wrapper1 {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .container-img {
+            height: 400px;
+            aspect-ratio: 1.5/1;
+            display: flex;
+            overflow: hidden;
+
+        }
+
+        .container-img:has(.img-slider.active) .img-slider:not(.active) {
+            filter: grayscale(100%);
+        }
+
+        .img-slider {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            gap: 10px;
+        }
+
+        .img-id {
+            height: 100%;
+            width: calc(100%/5);
+            object-fit: cover;
+            overflow: hidden;
+            border: 2px solid #141414;
+            transition: all 0.3s cubic-bezier(0.32, 0, 0.67, 0);
+            cursor: pointer;
+        }
+
+        .active {
+            width: 100%;
+        }
+
+        .wrapper1 .img-slider-head {
+            font-size: 2rem;
+            margin-bottom: 1%;
+            font-weight: 500;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            word-spacing: 1.1ch;
+            letter-spacing: 2ch;
+            position: relative;
+            left: 1%;
+        }
+
+        .container2 {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            flex-wrap: wrap;
+
+        }
+
+        .container2 .wrapper {
+            position: relative;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            width: 50%;
+        }
+
+        .container2 .wrapper .card {
+            position: relative;
+            width: 50%;
+            aspect-ratio: 1;
+            margin: 30px;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+
+        }
+
+
+        .container2 .card .content1 {
+            padding: 20px;
+            text-align: center;
+            transition: 0.5s;
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+
+        .container2 .card:hover .content1 {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+
+        .container2 .card .content1 h2 {
+            position: absolute;
+            top: -80px;
+            right: 30px;
+            font-size: 8em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .container2 .card .content1 h3 {
+            z-index: 1;
+            font-size: 1.8em;
+            color: #fff
+        }
+
+        .container2 .card .content1 p {
+            font-weight: 300;
+            font-size: 1em;
+            color: #fff
+        }
+
+        .container2 .card .content1 a {
+            position: relative;
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 15px;
+            background: #fff;
+            color: #000;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .container2 .card .content1 a:hover {
+            background: #086bff;
+        }
+
+        #btn {
+            position: absolute;
+            font-size: 1em;
+            font-weight: 1000;
+            font-style: italic;
+            height: 2em;
+            width: 4em;
+        }
+
+        #span {
+            position: absolute;
+            font-size: 2em;
+        }
+
+
+
+        .description {
+            color: white;
+            width: 40%;
+            height: fit-content1;
+            text-align: start;
+            background: red;
+            padding: 10px;
+        }
+
+        .description h3 {
+            font-size: clamp(1.5rem, 2rem, 2.5rem);
+            margin-bottom: 5%;
+        }
+
+        .description p {
+            font-size: clamp(1rem, 1.1rem - 10px, 1.6rem);
+        }
+
+        @media (width<960px) {
+            .container2 {
+                align-items: center;
+
+            }
+
+            .container2 .wrapper .card {
+    
+                position: relative;
+                width:50%;
+                height: 50vh;
+                box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+                border-radius: 15px;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.5);
+                border-left: 1px solid rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(5px);
+            }
+
+            .container2 .wrapper {
+                width: 100%;
+                padding: 10px;
+                align-items: center;
+
+            }
+
+            .description {
+                width: 50%;
+            }
+        }
+        #btn {
+            position: absolute;
+            font-size: 1em;
+            font-weight: 1000;
+            font-style: italic;
+            height: 2em;
+            width: 4em;
+        }
+
+        #span {
+            position: absolute;
+            font-size: 2em;
+        }
+
+
+        footer .links {
+            margin-top: 5%;
+            display: grid;
+            place-items: center;
+            grid-template-areas: '1 1 1 1';
+            height: 50vh;
+            padding: 10px;
+        }
+
+        .footerlink {
+            margin-bottom: 10px;
+        }
+
+        .footer-logo {
+            margin-top: 5%;
+            display: grid;
+            place-items: center;
+            grid-template: '1 1 1 1';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-black">
+        <header class="top-0 z-50 absolute inset-x-0">
+            <nav class="flex justify-between items-center lg:px-8 p-6" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <h2>LOGO</h2>
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button type="button"
+                        class="inline-flex justify-center items-center -m-2.5 p-2.5 rounded-md text-gray-700">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="lg:flex lg:gap-x-12 hidden">
+                    <a href="#" class="font-semibold text-sm text-white leading-6">Product</a>
+                    <a href="#" class="font-semibold text-whitetext-sm leading-6">Features</a>
+                    <a href="#" class="font-semibold text-sm text-white leading-6">Marketplace</a>
+                    <a href="#" class="font-semibold text-sm text-white leading-6">Company</a>
+                </div>
+                <div class="lg:flex lg:flex-1 lg:justify-end hidden">
+                    <a href="#" class="font-semibold text-sm text-white leading-6">Log in <span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+            </nav>
+            <!-- Mobile menu, show/hide based on menu open state. -->
+            
+        </header>
+
+        <div class="relative px-6 lg:px-8 pt-14 isolate">
+            <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-10 text-center">
+            <h1 id="heading" class="font-bold text-4xl text-white sm:text-6xl tracking-tight">Lorem ipsum dolor sit amet consectetur.</h1>
+            <p class="mt-6 text-gray-300 text-w leading-8">Anim aute id magna aliqua ad ad non deserunt sunt.
+                Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+            <div class="flex justify-center items-center gap-x-6 mt-10">
+                <a href="#"
+                    class="bg-indigo-600 hover:bg-indigo-500 shadow-sm px-3.5 py-2.5 rounded-md font-semibold text-sm text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                    started</a>
+                <a href="#" class="font-semibold text-gray-500 text-sm leading-6">Learn more <span
+                        aria-hidden="true">→</span></a>
+            </div>
+            <div class="mx-auto py-32 sm:py-48 lg:py-10 max-w-2xl">
+                <div class="sm:flex sm:justify-center hidden sm:mb-8">
+                    <div
+                        class="relative px-3 py-1 rounded-full text-gray-600 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                        How to use this,Read Docs. <a href="#" class="font-semibold text-indigo-600"><span
+                                class="absolute inset-0" aria-hidden="true"></span>Read more <span
+                                aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="circle"></div>
+    <main class="main-page">
+        <div class="main-container">
+            <div class="main-text">
+                <div class="text-video">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                <div class="text-video">Lorem ipsum dolor sit amet.</div>
+            </div>
+
+
+            <img class="video-img" src="images/dragIMG.jpg" alt="hh">
+            <section><video src="images/glitch_-_37946 (1080p).mp4" alt="" class="video" autoplay loop muted>
+            </section>
+           
+
+
+
+
+            <div class="mt-10 moving-text">
+
+                <div class="moving-text-content">
+                    <p class="para"></p>
+                    <h1 class="text-head">company1</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company2</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company3</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company4</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company5</h1>
+                </div>
+                <div class="moving-text-content">
+                    <p class="para"></p>
+                    <h1 class="text-head">company6</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company7</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company8</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company9</h1>
+                    <p class="para"></p>
+                    <h1 class="text-head">company10</h1>
+                </div>
+            </div>
+
+            <div class="mt-10 py-24 sm:py-32">
+                <div class="mx-auto px-6 lg:px-8 max-w-7xl">
+                  <dl class="gap-x-8 gap-y-16 grid grid-cols-1 lg:grid-cols-3 text-center">
+                    <div class="flex flex-col gap-y-4 mx-auto max-w-xs">
+                      <dt class="text-base text-white-600 leading-7">Transactions every 24 hours</dt>
+                      <dd class="order-first font-semibold text-3xl text-white-900 sm:text-5xl tracking-tight">44 million</dd>
+                    </div>
+                    <div class="flex flex-col gap-y-4 mx-auto max-w-xs">
+                      <dt class="text-base text-white-600 leading-7">Assets under holding</dt>
+                      <dd class="order-first font-semibold text-3xl text-white-900 sm:text-5xl tracking-tight">$119 trillion</dd>
+                    </div>
+                    <div class="flex flex-col gap-y-4 mx-auto max-w-xs">
+                      <dt class="text-base text-white-600 leading-7">New users annually</dt>
+                      <dd class="order-first font-semibold text-3xl text-white-900 sm:text-5xl tracking-tight">46,000</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+              
+              
+            <div class="main-content">
+                <div class="relative px-6 lg:px-8 pt-14 isolate">
+                    <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                        aria-hidden="true">
+                        <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="container2">
+                    <div class="wrapper">
+                        <div class="card">
+                            <div class="content1">
+                                <h2>01</h2>
+                                <h3>Card One</h3>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit nemo
+                                    vitae
+                                    aperiam
+                                    reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates, iusto
+                                    totam
+                                    assumenda error?</p>
+                                <a href="">Read More</a>
+            
+                            </div>
+                        </div>
+            
+                        <div class="description">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                                nobis,
+                                similique voluptatum pariatur. Nobis!</p>
+                        </div>
+                    </div>
+            
+                    <div class="wrapper">
+                        <div class="card">
+                            <div class="content1">
+                                <h2>02</h2>
+                                <h3>Card Two</h3>
+            
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit nemo
+                                    vitae
+                                    aperiam
+                                    reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates, iusto
+                                    totam
+                                    assumenda error?</p>
+                                <a href="">Read More</a>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                                nobis,
+                                similique voluptatum pariatur. Nobis!</p>
+                        </div>
+                    </div>
+            
+                    <div class="wrapper">
+                        <div class="card">
+                            <div class="content1">
+                                <h2>03</h2>
+                                <h3>Card Three</h3>
+            
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit
+                                    nemo
+                                    vitae
+                                    aperiam
+                                    reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates,
+                                    iusto
+                                    totam
+                                    assumenda error?</p>
+                                <a href="">Read More</a>
+            
+                            </div>
+                        </div>
+                        <div class="description">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                                nobis,
+                                similique voluptatum pariatur. Nobis!</p>
+                        </div>
+                    </div>
+            
+                    <div class="wrapper">
+                        <div class="card">
+                            <div class="content1">
+                                <h2>04</h2>
+                                <h3>Card Three</h3>
+            
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus assumenda ut odit
+                                    nemo
+                                    vitae
+                                    aperiam
+                                    reprehenderit aliquam? Expedita libero quidem ipsum magni quis sunt commodi voluptates,
+                                    iusto
+                                    totam
+                                    assumenda error?</p>
+                                <a href="">Read More</a>
+            
+                            </div>
+                        </div>
+                        <div class="description">
+                            <h3>Lorem ipsum dolor sit amet.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt tempora vel est a veritatis unde
+                                nobis,
+                                similique voluptatum pariatur. Nobis!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <section class="about-product">
+                <div class="relative px-6 lg:px-8 pt-14 isolate">
+                    <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                        aria-hidden="true">
+                        <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="style1">
+                    <div class="style-head">
+                        <h2>Heading</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tempora eligendi ipsam rerum
+                            suscipit
+                            fugiat, magnam adipisci? Illo velit magnam impedit assumenda necessitatibus tempore id
+                            tenetur,
+                            provident blanditiis delectus in.</p>
+                    </div>
+
+                    <div class="img-product"></div>
+                </div>
+
+                <div class="style2">
+                    <div class="img-product"></div>
+                    <div class="style-head">
+                        <h2>Heading</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tempora eligendi ipsam rerum
+                            suscipit
+                            fugiat, magnam adipisci? Illo velit magnam impedit assumenda necessitatibus tempore id
+                            tenetur,
+                            provident blanditiis delectus in.</p>
+                    </div>
+                </div>
+
+                <div class="style1">
+                    <div class="style-head">
+                        <h2>Heading</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tempora eligendi ipsam rerum
+                            suscipit
+                            fugiat, magnam adipisci? Illo velit magnam impedit assumenda necessitatibus tempore id
+                            tenetur,
+                            provident blanditiis delectus in.</p>
+                    </div>
+                    <div class="relative px-6 lg:px-8 pt-14 isolate">
+                        <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                            aria-hidden="true">
+                            <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                            </div>
+            
+                        </div>
+                    </div>
+                    <div class="img-product"></div>
+                </div>
+
+
+            </section>
+
+            <div class="wrapper1">
+                <div class="img-slider-head">
+
+                    <h2>Hall Of Fame</h2>
+                </div>
+                <div class="container-img">
+                    <img class="img-id img-slider" src="images/walls.jpg">
+
+                    <img class="img-id img-slider" src="images/space/gallexy1.jpg">
+
+                    <img class="img-id img-slider" src="images/space/effect1.jpg">
+
+                    <img class="img-id img-slider" src="images/dragIMG.jpg">
+
+                    <img class="img-id img-slider" src="images/green-gallary/green-disk.jpg">
+
+
+                </div>
+            </div>
+
+
+            <div class="bg-black py-24 sm:py-32">
+
+                <div class="relative px-6 lg:px-8 pt-14 isolate">
+                    <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                        aria-hidden="true">
+                        <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                        </div>
+        
+                    </div>
+                </div>
+
+                <div class="mx-auto px-6 lg:px-8 max-w-7xl">
+                    <div class="mx-auto max-w-2xl lg:text-center">
+                        <h2 class="font-semibold text-base text-indigo-600 leading-7">Deploy faster</h2>
+                        <p class="mt-2 font-bold text-3xl text-white-900 sm:text-4xl tracking-tight">Everything you need
+                            to deploy your app</p>
+                        <p class="mt-6 text-gray-400 text-lg leading-8">Quis tellus eget adipiscing convallis sit sit
+                            eget aliquet quis. Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In
+                            mi viverra elit nunc.</p>
+                    </div>
+                    <div class="mx-auto mt-16 sm:mt-20 lg:mt-24 max-w-2xl lg:max-w-4xl">
+                        <dl class="gap-x-8 gap-y-10 lg:gap-y-16 grid grid-cols-1 lg:grid-cols-2 max-w-xl lg:max-w-none">
+                            <div class="relative pl-16">
+                                <dt class="font-semibold text-base text-indigo-500 leading-7">
+                                    <div
+                                        class="top-0 left-0 absolute flex justify-center items-center bg-indigo-600 rounded-lg w-10 h-10">
+                                        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                                        </svg>
+                                    </div>
+                                    Push to deploy
+                                </dt>
+                                <dd class="mt-2 text-base text-gray-600 leading-7">Morbi viverra dui mi arcu sed. Tellus
+                                    semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.</dd>
+                            </div>
+                            <div class="relative pl-16">
+                                <dt class="font-semibold text-base text-indigo-500 leading-7">
+                                    <div
+                                        class="top-0 left-0 absolute flex justify-center items-center bg-indigo-600 rounded-lg w-10 h-10">
+                                        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                        </svg>
+                                    </div>
+                                    SSL certificates
+                                </dt>
+                                <dd class="mt-2 text-base text-gray-600 leading-7">Sit quis amet rutrum tellus
+                                    ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus
+                                    amet.</dd>
+                            </div>
+                            <div class="relative pl-16">
+                                <dt class="font-semibold text-base text-indigo-500 leading-7">
+                                    <div
+                                        class="top-0 left-0 absolute flex justify-center items-center bg-indigo-600 rounded-lg w-10 h-10">
+                                        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                        </svg>
+                                    </div>
+                                    Simple queues
+                                </dt>
+                                <dd class="mt-2 text-base text-gray-600 leading-7">Quisque est vel vulputate cursus.
+                                    Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.</dd>
+                            </div>
+                            <div class="relative pl-16">
+                                <dt class="font-semibold text-base text-indigo-500 leading-7">
+                                    <div
+                                        class="top-0 left-0 absolute flex justify-center items-center bg-indigo-600 rounded-lg w-10 h-10">
+                                        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" />
+                                        </svg>
+                                    </div>
+                                    Advanced security
+                                </dt>
+                                <dd class="mt-2 text-base text-gray-600 leading-7">Arcu egestas dolor vel iaculis in
+                                    ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra
+                                    eget.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="about-product">
+                <div class="relative px-6 lg:px-8 pt-14 isolate">
+                    <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                        aria-hidden="true">
+                        <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="style1">
+                    <div class="style-head">
+                        <h2>Heading</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tempora eligendi ipsam rerum
+                            suscipit
+                            fugiat, magnam adipisci? Illo velit magnam impedit assumenda necessitatibus tempore id
+                            tenetur,
+                            provident blanditiis delectus in.</p>
+                    </div>
+
+                    <div class="img-product"></div>
+                </div>
+
+                <div class="style2">
+                    <div class="img-product"></div>
+                    <div class="style-head">
+                        <h2>Heading</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tempora eligendi ipsam rerum
+                            suscipit
+                            fugiat, magnam adipisci? Illo velit magnam impedit assumenda necessitatibus tempore id
+                            tenetur,
+                            provident blanditiis delectus in.</p>
+                    </div>
+                </div>
+
+                <div class="style1">
+                    <div class="style-head">
+                        <h2>Heading</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed tempora eligendi ipsam rerum
+                            suscipit
+                            fugiat, magnam adipisci? Illo velit magnam impedit assumenda necessitatibus tempore id
+                            tenetur,
+                            provident blanditiis delectus in.</p>
+                    </div>
+                    <div class="relative px-6 lg:px-8 pt-14 isolate">
+                        <div class="-top-40 sm:-top-80 -z-10 absolute inset-x-0 blur-3xl transform-gpu overflow-hidden"
+                            aria-hidden="true">
+                            <div class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[36.125rem] sm:w-[72.1875rem] -translate-x-1/2 aspect-[1155/678] rotate-[30deg]"
+                                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                            </div>
+            
+                        </div>
+                    </div>
+                    <div class="img-product"></div>
+                </div>
+
+
+            </section>
+
+
+
+
+        </div>
+
+    </main>
+
+    <section class="bg-indigo">
+        
+        <div class="mx-auto px-4 lg:px-6 py-8 sm:py-16 max-w-screen-xl">
+            <h2 class="mb-8 font-extrabold text-4xl text-gray-900 dark:text-white tracking-tight">Frequently asked questions</h2>
+            <div class="md:gap-16 border-gray-200 dark:border-gray-700 grid md:grid-cols-2 pt-8 border-t text-left">
+                <div>
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            What do you mean by "Figma assets"?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">You will have access to download the full Figma project including all of the pages, the components, responsive pages, and also the icons, illustrations, and images included in the screens.</p>
+                    </div>
+                    <div class="mb-10">                        
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            What does "lifetime access" exactly mean?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">Once you have purchased either the design, code, or both packages, you will have access to all of the future updates based on the roadmap, free of charge.</p>
+                    </div>
+
+                    
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            How does support work?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">We're aware of the importance of well qualified support, that is why we decided that support will only be provided by the authors that actually worked on this project.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Feel free to <a href="#" class="font-medium text-primary-600 dark:text-primary-500 underline hover:no-underline" target="_blank" rel="noreferrer">contact us</a> and we'll help you out as soon as we can.</p>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            I want to build more than one project. Is that allowed?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">You can use Windster for an unlimited amount of projects, whether it's a personal website, a SaaS app, or a website for a client. As long as you don't build a product that will directly compete with Windster either as a UI kit, theme, or template, it's fine.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Find out more information by <a href="#" class="font-medium text-primary-600 dark:text-primary-500 underline hover:no-underline">reading the license</a>.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            What does "free updates" include?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">The free updates that will be provided is based on the <a href="#" class="font-medium text-primary-600 dark:text-primary-500 underline hover:no-underline">roadmap</a> that we have laid out for this project. It is also possible that we will provide extra updates outside of the roadmap as well.</p>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            What does the free version include?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">The <a href="#" class="font-medium text-primary-600 dark:text-primary-500 underline hover:no-underline">free version</a> of Windster includes a minimal style guidelines, component variants, and a dashboard page with the mobile version alongside it.</p>
+                        <p class="text-gray-500 dark:text-gray-400">You can use this version for any purposes, because it is open-source under the MIT license.</p>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            What is the difference between Windster and Tailwind UI?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">Although both Windster and Tailwind UI are built for integration with Tailwind CSS, the main difference is in the design, the pages, the extra components and UI elements that Windster includes.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Additionally, Windster is a project that is still in development, and later it will include both the application, marketing, and e-commerce UI interfaces.</p>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="flex items-center mb-4 font-medium text-gray-900 text-lg dark:text-white">
+                            <svg class="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            Can I use Windster in open-source projects?
+                        </h3>
+                        <p class="text-gray-500 dark:text-gray-400">Generally, it is accepted to use Windster in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to Windster itself.</p>
+                        <p class="text-gray-500 dark:text-gray-400">With that being said, feel free to use this design kit for your open-source projects.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Find out more information by <a href="#" class="font-medium text-primary-600 dark:text-primary-500 underline hover:no-underline">reading the license</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+   
+    <div class="relative bg-black-900 py-16 sm:py-24 lg:py-32 overflow-hidden isolate">
+        <div class="mx-auto px-6 lg:px-8 max-w-7xl">
+            <div class="gap-x-8 gap-y-16 grid grid-cols-1 lg:grid-cols-2 mx-auto max-w-2xl lg:max-w-none">
+                <div class="max-w-xl lg:max-w-lg">
+                    <h2 class="font-bold text-3xl text-white sm:text-4xl tracking-tight">Subscribe to our newsletter.
+                    </h2>
+                    <p class="mt-4 text-gray-300 text-lg leading-8">Nostrud amet eu ullamco nisi aute in ad minim
+                        nostrud adipisicing velit quis. Duis tempor incididunt dolore.</p>
+                    <div class="flex gap-x-4 mt-6 max-w-md">
+                        <label for="email-address" class="sr-only">Email address</label>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required
+                            class="flex-auto border-0 bg-white/5 shadow-sm px-3.5 py-2 rounded-md min-w-0 text-white sm:text-sm sm:leading-6 ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                            placeholder="Enter your email">
+                        <button type="submit"
+                            class="flex-none bg-indigo-500 hover:bg-indigo-400 shadow-sm px-3.5 py-2.5 rounded-md font-semibold text-sm text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Subscribe</button>
+                    </div>
+                </div>
+                <dl class="gap-x-8 gap-y-10 grid grid-cols-1 sm:grid-cols-2 lg:pt-2">
+                    <div class="flex flex-col items-start">
+                        <div class="bg-white/5 p-2 rounded-md ring-1 ring-white/10">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                            </svg>
+                        </div>
+                        <dt class="mt-4 font-semibold text-white">Weekly articles</dt>
+                        <dd class="mt-2 text-gray-400 leading-7">Non laboris consequat cupidatat laborum magna. Eiusmod
+                            non irure cupidatat duis commodo amet.</dd>
+                    </div>
+                    <div class="flex flex-col items-start">
+                        <div class="bg-white/5 p-2 rounded-md ring-1 ring-white/10">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 013.15 0V15M6.9 7.575a1.575 1.575 0 10-3.15 0v8.175a6.75 6.75 0 006.75 6.75h2.018a5.25 5.25 0 003.712-1.538l1.732-1.732a5.25 5.25 0 001.538-3.712l.003-2.024a.668.668 0 01.198-.471 1.575 1.575 0 10-2.228-2.228 3.818 3.818 0 00-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0116.35 15m.002 0h-.002" />
+                            </svg>
+                        </div>
+                        <dt class="mt-4 font-semibold text-white">No spam</dt>
+                        <dd class="mt-2 text-gray-400 leading-7">Officia excepteur ullamco ut sint duis proident non
+                            adipisicing. Voluptate incididunt anim.</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <div class="top-0 xl:-top-6 left-1/2 -z-10 absolute blur-3xl -translate-x-1/2" aria-hidden="true">
+            <div class="bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 w-[72.1875rem] aspect-[1155/678]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+        <footer class="bg-black">
+            <div class="mx-auto w-full max-w-screen-xl">
+              <div class="gap-8 grid grid-cols-2 md:grid-cols-4 px-4 py-6 lg:py-8">
+                <div>
+                    <h2 class="mb-6 font-semibold text-gray-900 text-sm dark:text-white uppercase">Company</h2>
+                    <ul class="font-medium text-gray-500 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">About</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Careers</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Brand Center</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 font-semibold text-gray-900 text-sm dark:text-white uppercase">Help center</h2>
+                    <ul class="font-medium text-gray-500 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Discord Server</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Twitter</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Facebook</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 font-semibold text-gray-900 text-sm dark:text-white uppercase">Legal</h2>
+                    <ul class="font-medium text-gray-500 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Privacy Policy</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Licensing</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 font-semibold text-gray-900 text-sm dark:text-white uppercase">Download</h2>
+                    <ul class="font-medium text-gray-500 dark:text-gray-400">
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">iOS</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Android</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">Windows</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="hover:underline">MacOS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="md:flex md:justify-between md:items-center bg-indigo px-4 py-6">
+                <span class="text-gray-500 text-sm sm:text-center dark:text-gray-300">© 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights Reserved.
+                </span>
+                <div class="flex sm:justify-center space-x-5 rtl:space-x-reverse mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                                <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+                            </svg>
+                          <span class="sr-only">Facebook page</span>
+                      </a>
+                      <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+                                <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
+                            </svg>
+                          <span class="sr-only">Discord community</span>
+                      </a>
+                      <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
+                            <path fill-rule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clip-rule="evenodd"/>
+                        </svg>
+                          <span class="sr-only">Twitter page</span>
+                      </a>
+                      <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+                          </svg>
+                          <span class="sr-only">GitHub account</span>
+                      </a>
+                      <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd"/>
+                        </svg>
+                          <span class="sr-only">Dribbble account</span>
+                      </a>
+                </div>
+              </div>
+            </div>
+        </footer>
+        
+    </footer>
+
+
+
+    <script>
+
+        const imgs = document.querySelectorAll('.img-slider')
+
+        function clearActiveImg() {
+            imgs.forEach(function (img) {
+                img.classList.remove('active');
+            })
+        }
+
+        imgs.forEach(function (img, index) {
+            img.onclick = function () {
+                event.stopPropagation()
+
+                if (imgs[index].classList.contains('active')) {
+                    imgs[index].classList.remove('active')
+                }
+                else {
+                    clearActiveImg(index);
+                    imgs[index].classList.add('active')
+                }
+            }
+        })
+
+        window.addEventListener('click', () => { clearActiveImg() })
+        imgs.forEach(function (img, index) {
+            setInterval(() => {
+                imgs[index].classList.remove('active')
+            }, 5000);
+        })
+    </script>
+
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1,
+        });
+
+        //It also supports NodeList
+        VanillaTilt.init(document.querySelectorAll(".card"));
+    </script>
+    <script>
+        const circleElement = document.querySelector('.circle');
+        const container = document.querySelector('.main-container');
+        // Create objects to track mouse position and custom cursor position
+        const mouse = { x: 0, y: 0 }; // Track current mouse position
+        const previousMouse = { x: 0, y: 0 } // Store the previous mouse position
+        const circle = { x: 0, y: 0 }; // Track the circle position
+
+        // Initialize variables to track scaling and rotation
+        let currentScale = 0; // Track current scale value
+        let currentAngle = 0; // Track current angle value
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+
+        });
+        // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
+        const speed = 0.11;
+
+        //start animation
+        const tick = () => {
+            // MOVE
+            // Calculate circle movement based on mouse position and smoothing
+            circle.x += (mouse.x - circle.x) * speed;
+            circle.y += (mouse.y - circle.y) * speed;
+
+            //create a transformation string for cursor translation
+            const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+
+            //SQUEEZE
+            //1.calculate the change in the mouse position (deltaMouse)
+            const deltaMouseX = mouse.x - previousMouse.x;
+            const deltaMouseY = mouse.y - previousMouse.y;
+            // Update previous mouse position for the next frame
+            previousMouse.x = mouse.x;
+            previousMouse.y = mouse.y;
+
+            // 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
+            const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 250);
+            // 3. Convert mouse velocity to a value in the range [0, 0.5]
+            const scaleValue = (mouseVelocity / 250) * 0.5;
+            // 4. Smoothly update the current scale
+            currentScale += (scaleValue - currentScale) * speed;
+            // 5. Create a transformation string for scaling
+            const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
+
+            // ROTATE
+            // 1. Calculate the angle using the atan2 function
+            const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
+            // 2. Check for a threshold to reduce shakiness at low mouse velocity
+            if (mouseVelocity > 10) {
+                currentAngle = angle;
+            }
+            // 3. Create a transformation string for rotation
+            const rotateTransform = `rotate(${currentAngle}deg)`;
+
+            // Apply all transformations to the circle element in a specific order: translate -> rotate -> scale
+            circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
+
+            // Request the next frame to continue the animation
+            window.requestAnimationFrame(tick);
+
+
+
+
+        }
+
+        // Start the animation loop
+        tick()
+
+
+
+    </script>
+</body>
+
+</html>
+
+</html>
+
+</html>
