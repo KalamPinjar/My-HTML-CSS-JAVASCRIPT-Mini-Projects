@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background: #000;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #image-track {
+            display: flex;
+            gap: 4vmin;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(0%, -50%);
+            user-select: none;
+        }
+
+        #image-track>.image {
+            width: 40vmin;
+            height: 56vmin;
+            object-fit: cover;
+            object-position: 100% center;
+        }
+
+        .popup {
+            user-select: none;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-25%, -50%);
+            font-size: 5rem;
+            font-family: sans-serif;
+            font-weight: bold;
+            width: 100%;
+            /* word-wrap: wrap;
+            word-break: keep-all;
+            white-space: wrap; */
+
+            z-index: 999;
+            color: white;
+            mix-blend-mode: difference;
+            animation: popup 5s linear;
+            opacity: 0;
+            scale: 0.8;
+        }
+
+        @keyframes popup {
+
+            0%,
+            50% {
+                opacity: 1;
+                scale: 1.08;
+            }
+
+            60%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .movetext {
+            font-size: 2ch;
+            color: greenyellow;
+            position: relative;
+            z-index: -99;
+            margin: 2rem;
+        }
+
+        .movetext:nth-child(even) {
+            right: -100%;
+            animation: toleft 15s linear infinite;
+            animation-duration: calc(15s/var(--i));
+            user-select: none;
+        }
+
+        .movetext:nth-child(odd) {
+            left: -5%;
+            animation: toright 15s linear infinite;
+            animation-duration: calc(15s/var(--i));
+            user-select: none;
+        }
+
+        @keyframes toleft {
+            to {
+                transform: translateX(-100%);
+                scale: 1.4;
+            }
+        }
+
+        @keyframes toright {
+
+            to {
+                transform: translateX(100%);
+                scale: 1.4;
+            }
+        }
+
+        .space {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="popup">Drag And Move Me!</div>
+
+    <div class="movetext" style="--i:12">text</div>
+    <div class="movetext" style="--i:22">text</div>
+    <div class="movetext" style="--i:13">text</div>
+    <div class="movetext" style="--i:14">text</div>
+    <div class="movetext" style="--i:16">text</div>
+    <div class="movetext" style="--i:22">text</div>
+    <div class="movetext" style="--i:28">text</div>
+    <div class="movetext" style="--i:25">text</div>
+    <div class="movetext" style="--i:20">text</div>
+    <div class="movetext" style="--i:21">text</div>
+    <div class="movetext" style="--i:11">text</div>
+    <div class="movetext" style="--i:6">text</div>
+    <div class="movetext" style="--i:19">text</div>
+    <div class="movetext" style="--i:10">text</div>
+
+    <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+        <img src="images/space/beautiful-planets.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/effect1.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/gallexy1.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/gallexy2.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/gallexy3.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/pink-gallexy.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/water-circle.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+        <img src="images/space/red-gallexy.jpg" height="250" width="200" alt="" class="image" draggable="false" />
+    </div>
+
+    <div class="space"></div>
+    <div class="space"></div>
+
+
+    <script>
+        const track = document.getElementById("image-track")
+
+        const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+        const handleOnUp = () => {
+            track.dataset.mouseDownAt = '0'
+            track.dataset.prevPercentage = track.dataset.percentage
+        }
+
+        const handleOnMove = e => {
+            if (track.dataset.mouseDownAt === '0') return;
+
+            const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+                maxDelta = window.innerWidth / 2;
+
+
+            const percentage = (mouseDelta / maxDelta) * -100,
+                nextPercentageUnconstrained =
+                    parseFloat(track.dataset.prevPercentage) + percentage,
+                nextPercentage =
+                    Math.max(Math.min(nextPercentageUnconstrained, 0), -100)
+
+            track.dataset.percentage = nextPercentage
+
+            track.animate({
+                transform: `translate(${nextPercentage}%, -50%)`
+            }, { duration: 1200, fill: "forwards" })
+
+            for (const image of track.getElementsByClassName("image")) {
+                image.animate({
+                    objectPosition: `${100 + nextPercentage}% center`
+                }, { duration: 1200, fill: "forwards" })
+            }
+        }
+
+        window.onmousedown = (e) => handleOnDown(e)
+        window.ontouchstart = (e) => handleOnDown(e.touches[0])
+        window.onmouseup = (e) => handleOnUp(e)
+        window.ontouchend = (e) => handleOnUp(e.touches[0])
+        window.onmousemove = (e) => handleOnMove(e)
+        window.touchmove = (e) => handleOnMove(e.touches[0])
+
+
+    </script>
+</body>
+
+</html>
