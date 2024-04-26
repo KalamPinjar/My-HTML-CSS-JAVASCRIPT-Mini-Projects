@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            overflow: hidden;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .container {
+            backdrop-filter: blur(900px);
+            z-index: 99;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container h2 {
+            color: transparent;
+            background: linear-gradient(midnightblue, Mediumpurple);
+            background-clip: text;
+            -webkit-background-clip: text;
+            /* margin-bottom: 1%; */
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+
+        #sentencediv {
+            height: 40%;
+            width: 50%;
+            background-color: rgba(183, 183, 245, 0.5);
+            margin-bottom: 5%;
+            border-radius: 10px;
+            color: black;
+            font-size: medium;
+            font-weight: 600;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        #sentencediv p {
+            margin: 10px;
+            font-size: larger;
+        }
+
+        #input {
+            position: relative;
+            height: 80px;
+            width: 50%;
+            margin-bottom: 20px;
+
+            border-radius: 30px;
+            background-color: rgba(123, 104, 238, 0.5);
+            border: 6px solid rgba(25, 25, 112, 0.8);
+        }
+
+        #input textarea {
+            padding: 10px;
+            height: 100%;
+            display: inline;
+            width: 100%;
+            background-color: transparent;
+            font-size: x-large;
+            text-wrap: wrap;
+            font-weight: 700;
+            border-radius: 20px;
+
+        }
+
+        textarea::placeholder {
+
+            color: white;
+        }
+
+        #speed {
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            width: 20%;
+            background-color: rgba(32, 32, 255, 0.1);
+            margin-bottom: 10px;
+        }
+
+        button {
+            position: relative;
+            background: rgba(0, 0, 205);
+            color: white;
+            height: 50%;
+            width: 50%;
+            border: 2px solid white;
+            border-radius: 20px;
+            transition: 0.4s all;
+        }
+
+        #re {
+            font-weight: 600;
+            background: linear-gradient(to left, mediumblue, midnightblue);
+            height: 10%;
+            width: 20%;
+            transition: 0.5s all;
+        }
+
+        #re:hover {
+            color: white;
+            scale: 1.03;
+            background: linear-gradient(to right, mediumblue, midnightblue);
+
+        }
+
+        button:hover {
+            font-weight: 600;
+            font-size: medium;
+            scale: 1.1;
+            background: white;
+            color: black;
+        }
+
+        #blur {
+            z-index: -99;
+            position: absolute;
+            height: 500vh;
+            width: 400%;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: radial-gradient(mediumslateblue, midnightblue, midnightblue, purple, purple);
+            animation: animate 5s infinite linear;
+        }
+
+        #blur1 {
+            z-index: -99;
+            position: absolute;
+            height: 500vh;
+            width: 400%;
+            border-radius: 50%;
+            background: radial-gradient(mediumslateblue, midnightblue, midnightblue, purple, purple);
+            animation: animate 5s infinite linear;
+        }
+
+
+        @keyframes animate {
+            from {
+                rotate: 0deg;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        #result {
+            margin-top: 10px;
+        }
+
+        blockquote {
+            position: relative;
+            border: none;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        }
+
+        /* blockquote h2{
+            font-size: 3rem;
+        }
+        blockquote h2::before{
+            position: absolute;
+            top: -40%;
+            left:-10%;
+            content: open-quote;
+            font-weight: bold;
+            color: black;
+            font-size: 100px;
+            
+        }
+        blockquote h2::after{
+            position: absolute;
+            bottom: -50%;
+            right: -10%;
+            content:close-quote;
+            font-weight: bold;
+            color: black;
+            font-size: 100px;
+
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="blur"></div>
+
+    <div id="blur1"></div>
+
+    <div class="container">
+        <blockquote>
+            <h2>Typing Speed Test</h2>
+        </blockquote>
+        <div id="sentencediv">
+            <p id="sentence"></p>
+        </div>
+        <div id="input"><textarea id="userInput" placeholder="Start Typing Here..."></textarea></div>
+        <!-- <div id="speed">
+            <button id="btn" onclick="checktypingspeed()">Check Speed</button>
+        </div> -->
+
+        <button id="re" onclick="gennew()">Generate New Session</button>
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        let sentences = ["The Quick Brown Fox Jumps Over The Lazy Dog.", "You Have A Chance So Take It Right Now Or Else Someone Else Will",
+            "Get The House Clean Before Leaving To Play With Your Friends", "Do You Ever Thought About Whats Your Friends Are Doing",
+            "JavaScript Is Very Popular Language With Many Features", "Coding Can Be Challenging But Rewarding Just Code You Will See",
+            "In Three Words I Can Sum Up Everything I've Learned About Life : It Goes On", "Dont Count The Days Make The Day Count"]
+
+        let currentsessionindex;
+        let startTime;
+        let currentcharindex;
+        let wrongInputs = 0;
+
+        function gennew() {
+            currentcharindex = 0
+            currentsessionindex = getrandomindex(sentences.length);
+            const sentenceElement = document.getElementById("sentence");
+            sentenceElement.innerText = sentences[currentsessionindex]
+            document.getElementById("userInput").value = "";
+            document.getElementById("result").innerText = "";
+            wrongInputs = 0;
+            enableTextArea();
+
+        }
+        function getrandomindex(max) {
+            return Math.floor(Math.random() * max)
+        }
+
+
+        function enableTextArea() {
+            const userInput = document.getElementById("userInput");
+            userInput.removeAttribute("disabled");
+            userInput.focus();
+            startTime = new Date();
+
+        }
+
+        let b = document.querySelector("#blur")
+        let b1 = document.querySelector("#blur1")
+        document.getElementById("userInput").addEventListener("keypress", function (event) {
+            const typedChar = String.fromCharCode(event.keyCode);
+
+            if (typedChar !== sentences[currentsessionindex][currentcharindex]) {
+                event.preventDefault();
+                if (currentcharindex > 0) {
+                    b.style.background = "red"
+                    b1.style.background = "red"
+                    wrongInputs++;
+                }
+
+            } else {
+
+                b.style.background = "radial-gradient(mediumslateblue, midnightblue, midnightblue, purple, purple)"
+                b1.style.background = "radial-gradient(mediumslateblue, midnightblue, midnightblue, purple, purple)"
+                currentcharindex++
+            }
+            if (currentcharindex === sentences[currentsessionindex].length) {
+                currentcharindex = 0;
+            }
+            if (event.key === ' ' && sentences[currentsessionindex][currentcharindex] === ' ') {
+                currentcharindex++;
+            }
+            // && currentcharindex > 0 && this.selectionStart === 0
+            if (event.key === 'Backspace') {
+                currentcharindex = Math.max(currentcharindex - 1, 0);
+            }
+
+            // if (currentcharindex == sentences[currentsessionindex].length) {
+            //     gennew();
+
+            // }
+
+            const typedText = this.value.trim();
+            const wordsTyped = typedText.split(/\s+/).filter(word => word !== '');
+            const wordsOriginal = sentences[currentsessionindex].split(/\s+/).filter(word => word !== '');
+
+
+            let correctWords = 0;
+            for (let i = 0; i < wordsTyped.length; i++) {
+                if (wordsTyped[i] === wordsOriginal[i]) {
+                    correctWords++;
+                }
+            }
+
+            const accuracy = Math.max(((correctWords - wrongInputs) / wordsOriginal.length) * 100, 0);
+            const runtimeWPM = calculateRuntimeWPM(typedText, startTime.getSeconds());
+            const resultElement = document.getElementById("result");
+            resultElement.innerText = `Accuracy: ${accuracy.toFixed(2)}% | Runtime WPM :${runtimeWPM}`;
+
+        });
+
+        document.getElementById("userInput").addEventListener("focus", enableTextArea);
+
+        function calculateRuntimeWPM(text, startTime) {
+            const endTime = new Date();
+            const timeDiffInSec = (endTime.getSeconds() - startTime) ;
+            const wordsTyped = text.split(/\s+/).filter(word => word !== '').length;
+            const wpm = (wordsTyped / timeDiffInSec) * 60;
+
+            return wpm.toFixed(2);
+        }
+        // let a = new Date()
+        // console.log(a.getSeconds())
+
+
+
+
+    </script>
+</body>
+
+</html>
